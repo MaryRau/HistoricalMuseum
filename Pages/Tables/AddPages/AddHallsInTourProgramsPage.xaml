@@ -1,0 +1,43 @@
+﻿<Page x:Class="HistoricalMuseum.Pages.AddToTables.AddHallsInTourProgramsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HistoricalMuseum.Pages.AddToTables"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="900"
+      Title="AddHallsInTourProgramsPage" Background="#FFF8ECE3">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="212"/>
+            <ColumnDefinition Width="94*"/>
+            <ColumnDefinition Width="53*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock VerticalAlignment="Center" Text="Экскурсионная программа:" TextAlignment="Right" TextWrapping="Wrap" Grid.Column="0" FontSize="27" Height="72" Margin="7,0,7,0" FontFamily="Constantia" Foreground="#FF6A6A6A"/>
+        <ComboBox Name="cmbTourProg" Grid.Column="1" Grid.ColumnSpan="2" FontSize="25" Margin="37,75,40,74" VerticalContentAlignment="Center" SelectedItem="{Binding TourPrograms.TourTheme}" IsEditable="True" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FF6A6A6A">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="#FFF0F0F0"/>
+                    <GradientStop Color="#FFEEDCCA" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
+        <TextBlock VerticalAlignment="Top" Text="Зал:" Grid.Row="1" Grid.Column="0" Margin="122,76,10,0" FontSize="40" Height="48" FontFamily="Constantia" Foreground="#FF6A6A6A"/>
+        <ComboBox Name="cmbHall" VerticalAlignment="Top" Margin="37,73,40,0" VerticalContentAlignment="Center" SelectedItem="{Binding Halls.Theme}" IsEditable="True" FontSize="25" Grid.ColumnSpan="2" Height="51" Grid.Column="1" Grid.Row="1" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FF6A6A6A">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="#FFF0F0F0"/>
+                    <GradientStop Color="#FFEEDCCA" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
+        <Button Name="ButtonSave" Content="Сохранить" Grid.Row="2" Margin="0,25,0,24" Background="#FFEEDCCA" HorizontalAlignment="Center" Width="160" Grid.Column="2" FontWeight="Bold" FontSize="28" Click="ButtonSave_Click" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FFC8844E"/>
+        <Button Name="ButtonCancel" Content="Отмена" Grid.Row="2" Click="ButtonCancel_Click" Margin="0,25,0,24" Background="#FFEEDCCA" HorizontalAlignment="Center" Width="160" FontWeight="Bold" FontSize="28" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FFC8844E"/>
+    </Grid>
+</Page>

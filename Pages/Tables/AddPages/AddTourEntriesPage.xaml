@@ -1,0 +1,57 @@
+﻿<Page x:Class="HistoricalMuseum.Pages.AddToTables.AddTourEntriesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HistoricalMuseum.Pages.AddToTables"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="900"
+      Title="AddTourEntriesPage" Background="#FFF8ECE3">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock VerticalAlignment="Top" Text="Дата:" TextWrapping="Wrap" Grid.Column="0" FontSize="40" Height="47" Margin="113,35,10,0" FontFamily="Constantia" Foreground="#FF6A6A6A"/>
+        <DatePicker Name="txtDate" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" FontSize="28" Margin="37,29,40,29" FontFamily="Constantia" Background="#FFEEDCCA" Foreground="#FF6A6A6A">
+            <DatePicker.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+                    <GradientStop Color="#FFBFAB96"/>
+                    <GradientStop Color="#FF715C48" Offset="1"/>
+                    <GradientStop Color="#FF98826C" Offset="0.459"/>
+                </LinearGradientBrush>
+            </DatePicker.BorderBrush>
+        </DatePicker>
+        <TextBlock VerticalAlignment="Center" Text="Экскурсионная программа:" TextAlignment="Right" TextWrapping="Wrap" Grid.Row="2" Grid.Column="0" Margin="9,20,10,20" FontSize="28" Height="70" FontFamily="Constantia" Foreground="#FF6A6A6A"/>
+        <ComboBox Name="cmbTourProgram" VerticalAlignment="Center" Margin="37,0,40,0" VerticalContentAlignment="Center" SelectedItem="{Binding TourPrograms.TourTheme}" IsEditable="True" FontSize="25" Grid.ColumnSpan="2" Height="51" Grid.Column="1" Grid.Row="2" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FF6A6A6A">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="#FFF0F0F0"/>
+                    <GradientStop Color="#FFEEDCCA" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
+        <Button Name="ButtonSave" Content="Сохранить" Grid.Row="4" Margin="0,10,0,14" Background="#FFEEDCCA" HorizontalAlignment="Center" Width="160" Grid.Column="2" FontWeight="Bold" FontSize="28" Click="ButtonSave_Click" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FFC8844E"/>
+        <Button Name="ButtonCancel" Content="Отмена" Grid.Row="4" Click="ButtonCancel_Click" Margin="0,10,0,14" Background="#FFEEDCCA" HorizontalAlignment="Center" Width="160" FontWeight="Bold" FontSize="28" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FFC8844E"/>
+        <TextBlock VerticalAlignment="Center" Text="Экскурсовод:" TextWrapping="Wrap" Grid.Column="0" Grid.Row="3" FontSize="35" Height="52" Margin="4,32,10,31" FontFamily="Constantia" Foreground="#FF6A6A6A"/>
+        <ComboBox Name="cmbGuide" VerticalAlignment="Center" Margin="37,0,40,0" VerticalContentAlignment="Center" SelectedItem="{Binding Staff.FIOStaff}" IsEditable="True" FontSize="25" Grid.ColumnSpan="2" Height="51" Grid.Column="1" Grid.Row="3" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FF6A6A6A">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="#FFF0F0F0"/>
+                    <GradientStop Color="#FFEEDCCA" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
+        <TextBlock VerticalAlignment="Top" Text="Время:" TextWrapping="Wrap" Grid.Column="0" Grid.Row="1" FontSize="40" Height="58" Margin="83,31,10,0" FontFamily="Constantia" Foreground="#FF6A6A6A"/>
+        <TextBox Name="txtTime" MaxLength="8" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" FontSize="28" Margin="37,31,40,31" FontFamily="Constantia" BorderBrush="#FF98826C" Background="#FFEEDCCA" Foreground="#FF6A6A6A"/>
+    </Grid>
+</Page>

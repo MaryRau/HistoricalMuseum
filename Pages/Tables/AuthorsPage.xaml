@@ -1,0 +1,45 @@
+﻿<Page x:Class="HistoricalMuseum.Pages.AuthorsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HistoricalMuseum.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="900"
+      Title="AuthorsPage" Background="#FFF8ECE3" IsVisibleChanged="Page_IsVisibleChanged">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="9*"/>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45*"/>
+            <RowDefinition Height="418*"/>
+            <RowDefinition Height="89*"/>
+        </Grid.RowDefinitions>
+
+        <TextBox Name="txtSearch" Grid.Column="1" Text="Поиск" VerticalAlignment="Stretch" TextAlignment="Right" FontSize="32" GotFocus="txtSearch_GotFocus" LostFocus="txtSearch_LostFocus" Background="#FFEEDCCA" TextBlock.FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FF6A6A6A" BorderThickness="2" SelectionBrush="#FF5F4D3D"/>
+        <Button Name="btnSearch" Grid.Column="2" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="2" Click="btnSearch_Click">
+            <Image Source="D:\учёба\курсач\HistoricalMuseum222222-master\search.png" Width="40"/>
+        </Button>
+
+        <DataGrid Background="#FFF8ECE3" FontSize="15" Grid.Row="1" Name="DataGridAuthors" AutoGenerateColumns="False" IsReadOnly="True" Grid.ColumnSpan="3" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FF6A6A6A">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ФИО автора" Binding="{Binding FIOAuthor}" Width="*" FontSize="20"/>
+                <DataGridTemplateColumn Width="250">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnEdit" Content="Редактировать" Background="#FFEEDCCA" FontWeight="Bold" Foreground="#FFC8844E" Click="btnEdic_Click"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Grid.Row="2" Name="ButtonAdd" Content="Добавить" Background="#FFEEDCCA" HorizontalAlignment="Left" Width="90" FontWeight="Bold" FontSize="15" Click="ButtonAdd_Click" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FFC8844E"/>
+        <Button Grid.Row="2" Grid.Column="1" Name="ButtonDel" Content="Удалить" Background="#FFEEDCCA" HorizontalAlignment="Left" Margin="360,0,0,0" Width="90" FontWeight="Bold" FontSize="15" Click="ButtonDel_Click" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FFC8844E" Grid.ColumnSpan="2"/>
+        <Button Grid.Row="2" Name="btnBack" Content="Назад" Background="#FFEEDCCA" HorizontalAlignment="Left" Width="90" FontWeight="Bold" FontSize="15" Margin="405,0,0,0" Grid.ColumnSpan="2" Click="btnBack_Click" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FFC8844E"/>
+    </Grid>
+</Page>

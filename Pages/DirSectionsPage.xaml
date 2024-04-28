@@ -1,0 +1,30 @@
+﻿<Page x:Class="HistoricalMuseum.DirSectionsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HistoricalMuseum"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="900"
+      Title="DirSectionsPage" Background="#FFF8ECE3">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button Content="Музей" HorizontalAlignment="Center" Height="134" VerticalAlignment="Center" Width="300" FontSize="45" Background="#FFEEDCCA" Foreground="#FFC8844E" FontWeight="Bold" BorderBrush="#FF98826C" Click="btnMuseum_Click" FontFamily="Constantia"/>
+        <Button Content="Экскурсии" HorizontalAlignment="Left" Height="134" VerticalAlignment="Center" Width="300" FontSize="45" Background="#FFEEDCCA" Foreground="#FFC8844E" FontWeight="Bold" BorderBrush="#FF98826C" Grid.Column="1" Margin="75,0,0,0" Click="btnTours_Click" Grid.ColumnSpan="2" FontFamily="Constantia"/>
+        <Button HorizontalAlignment="Center" Height="134" VerticalAlignment="Top" Width="300" FontSize="32" Background="#FFEEDCCA" Foreground="#FFC8844E" FontWeight="Bold" BorderBrush="#FF98826C" Grid.Row="1" Click="Report_Click" Margin="0,10,0,0">
+            <TextBlock Text="Отчёт по проведённым экскурсиям" TextWrapping="Wrap" TextAlignment="Center" FontFamily="Constantia"/>
+        </Button>
+        <Button HorizontalAlignment="Left" Height="134" VerticalAlignment="Top" Width="300" FontSize="32" Background="#FFEEDCCA" Foreground="#FFC8844E" FontWeight="Bold" BorderBrush="#FF98826C" Grid.Row="1" Click="Report_Click_1" Grid.Column="1" Margin="75,10,0,0" Grid.ColumnSpan="2">
+            <TextBlock Text="Отчёт по посещению экскурсий" TextWrapping="Wrap" TextAlignment="Center" Width="267" FontFamily="Constantia"/>
+        </Button>
+        <Button Name="btnExit" Content="Выйти" HorizontalAlignment="Center" Height="50" VerticalAlignment="Top" Width="130" FontSize="40" Foreground="#FF6A6A6A" BorderBrush="#00707070" Background="#00DDDDDD" FontFamily="Constantia" Grid.Row="1" Margin="10,215,10,0" Grid.Column="2" Click="btnExit_Click"/>
+    </Grid>
+</Page>

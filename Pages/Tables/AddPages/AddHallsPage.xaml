@@ -1,0 +1,26 @@
+﻿<Page x:Class="HistoricalMuseum.Pages.AddToTables.AddHallsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HistoricalMuseum.Pages.AddToTables"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="900"
+      Title="AddHallsPage" Background="#FFF8ECE3">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock VerticalAlignment="Center" TextAlignment="Right" Text="Тематика:" Grid.Column="0" Margin="10,131,10,132" FontSize="40" Height="51" FontFamily="Constantia" Foreground="#FF6A6A6A"/>
+        <TextBox Text="{Binding Theme}" MaxLength="255" Name="txtTheme" VerticalAlignment="Center" Margin="38,5,40,0" Grid.Column="1" FontSize="25" Grid.ColumnSpan="2" Height="36" FontFamily="Constantia" BorderBrush="#FF98826C" Background="#FFEEDCCA" Foreground="#FF6A6A6A"/>
+        <Button Name="ButtonSave" Content="Сохранить" Grid.Row="2" Margin="0,38,0,39" Background="#FFEEDCCA" HorizontalAlignment="Center" Width="160" Grid.Column="2" FontWeight="Bold" FontSize="28" Click="ButtonSave_Click" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FFC8844E"/>
+        <Button Name="ButtonCancel" Content="Отмена" Grid.Row="2" Click="ButtonCancel_Click" Margin="0,38,0,39" Background="#FFEEDCCA" HorizontalAlignment="Center" Width="160" FontWeight="Bold" FontSize="28" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FFC8844E"/>
+    </Grid>
+</Page>
