@@ -84,5 +84,31 @@ namespace HistoricalMuseum
         {
             NavigationService.Navigate(new AddHallsInTourProgramsPage((sender as Button).DataContext as HallsInTourPrograms));
         }
+
+        private void txtSearch_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtSearch.Text == "Поиск")
+            {
+                txtSearch.Clear();
+            }
+        }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            string s = txtSearch.Text.Trim();
+            if (txtSearch.Text != "Поиск" || !string.IsNullOrWhiteSpace(s))
+                DataGridHallsInPrograms.ItemsSource = MuseumEntities.GetContext().HallsInTourPrograms.Where(x => x.Halls.Theme.Contains(txtSearch.Text) || x.TourPrograms.TourTheme.Contains(txtSearch.Text)).ToList();
+            else
+            {
+                DataGridHallsInPrograms.ItemsSource = MuseumEntities.GetContext().HallsInTourPrograms.ToList();
+                txtSearch.Text = "Поиск";
+            }
+        }
+
+        private void txtSearch_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtSearch.Text))
+                txtSearch.Text = "Поиск";
+        }
     }
 }

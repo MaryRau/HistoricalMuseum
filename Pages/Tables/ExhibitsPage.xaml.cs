@@ -83,5 +83,33 @@ namespace HistoricalMuseum
             fromPage = from;
             return fromPage;
         }
+
+        private void txtSearch_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtSearch.Text == "Поиск")
+            {
+                txtSearch.Clear();
+            }
+        }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            string s = txtSearch.Text.Trim();
+            if (txtSearch.Text != "Поиск" || !string.IsNullOrWhiteSpace(s))
+                DataGridExhibits.ItemsSource = MuseumEntities.GetContext().Exhibits.Where(x => x.Exhibit.Contains(txtSearch.Text) || x.ExhibitsTypes.Type.Contains(txtSearch.Text) ||
+                x.HistoricalEpochs.Epoch.Contains(txtSearch.Text) || x.Authors.FIOAuthor.Contains(txtSearch.Text) || x.Countries.Country.Contains(txtSearch.Text) ||
+                x.Description.Contains(txtSearch.Text)).ToList();
+            else
+            {
+                DataGridExhibits.ItemsSource = MuseumEntities.GetContext().Exhibits.ToList();
+                txtSearch.Text = "Поиск";
+            }
+        }
+
+        private void txtSearch_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtSearch.Text))
+                txtSearch.Text = "Поиск";
+        }
     }
 }

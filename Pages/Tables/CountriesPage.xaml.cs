@@ -82,6 +82,7 @@ namespace HistoricalMuseum.Pages
         {
             NavigationService.Navigate(new AddCountryPage((sender as Button).DataContext as Countries));
         }
+
         private void txtSearch_GotFocus(object sender, RoutedEventArgs e)
         {
             if (txtSearch.Text == "Поиск")

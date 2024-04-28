@@ -83,5 +83,31 @@ namespace HistoricalMuseum.Pages
         {
             NavigationService.Navigate(new AddExhInStoreroomPage((sender as Button).DataContext as ExhibitsInStoreroom));
         }
+
+        private void txtSearch_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtSearch.Text == "Поиск")
+            {
+                txtSearch.Clear();
+            }
+        }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            string s = txtSearch.Text.Trim();
+            if (txtSearch.Text != "Поиск" || !string.IsNullOrWhiteSpace(s))
+                DataGridExhInStoreroom.ItemsSource = MuseumEntities.GetContext().ExhibitsInStoreroom.Where(x => x.Exhibits.Exhibit.Contains(txtSearch.Text)).ToList();
+            else
+            {
+                DataGridExhInStoreroom.ItemsSource = MuseumEntities.GetContext().ExhibitsInStoreroom.ToList();
+                txtSearch.Text = "Поиск";
+            }
+        }
+
+        private void txtSearch_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtSearch.Text))
+                txtSearch.Text = "Поиск";
+        }
     }
 }

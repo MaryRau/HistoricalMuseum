@@ -73,5 +73,31 @@ namespace HistoricalMuseum
         {
             NavigationService.Navigate(new AddStaffPage((sender as Button).DataContext as Staff));
         }
+
+        private void txtSearch_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtSearch.Text == "Поиск")
+            {
+                txtSearch.Clear();
+            }
+        }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            string s = txtSearch.Text.Trim();
+            if (txtSearch.Text != "Поиск" || !string.IsNullOrWhiteSpace(s))
+                DataGridStaff.ItemsSource = MuseumEntities.GetContext().Staff.Where(x => x.FIOStaff.Contains(txtSearch.Text) || x.Posts.Post.Contains(txtSearch.Text)).ToList();
+            else
+            {
+                DataGridStaff.ItemsSource = MuseumEntities.GetContext().Staff.ToList();
+                txtSearch.Text = "Поиск";
+            }
+        }
+
+        private void txtSearch_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtSearch.Text))
+                txtSearch.Text = "Поиск";
+        }
     }
 }

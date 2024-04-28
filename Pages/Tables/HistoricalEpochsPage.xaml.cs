@@ -83,5 +83,31 @@ namespace HistoricalMuseum.Pages
         {
             NavigationService.Navigate(new AddEpochPage((sender as Button).DataContext as HistoricalEpochs));
         }
+
+        private void txtSearch_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtSearch.Text == "Поиск")
+            {
+                txtSearch.Clear();
+            }
+        }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            string s = txtSearch.Text.Trim();
+            if (txtSearch.Text != "Поиск" || !string.IsNullOrWhiteSpace(s))
+                DataGridEpochs.ItemsSource = MuseumEntities.GetContext().HistoricalEpochs.Where(x => x.Epoch.Contains(txtSearch.Text)).ToList();
+            else
+            {
+                DataGridEpochs.ItemsSource = MuseumEntities.GetContext().HistoricalEpochs.ToList();
+                txtSearch.Text = "Поиск";
+            }
+        }
+
+        private void txtSearch_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtSearch.Text))
+                txtSearch.Text = "Поиск";
+        }
     }
 }

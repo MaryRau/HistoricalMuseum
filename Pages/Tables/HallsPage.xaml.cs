@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -83,6 +84,48 @@ namespace HistoricalMuseum
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AddHallsPage((sender as Button).DataContext as Halls));
+        }
+
+        private void txtSearch_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtSearch.Text == "Поиск")
+            {
+                txtSearch.Clear();
+            }
+        }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            string s = txtSearch.Text.Trim();
+            int id;
+            try
+            {
+                id = int.Parse(txtSearch.Text);
+            }
+            catch (Exception)
+            {
+                id = 0;
+            }
+
+            if (txtSearch.Text != "Поиск" || !string.IsNullOrWhiteSpace(s))
+            {
+                if (id != 0)
+                    DataGridHalls.ItemsSource = MuseumEntities.GetContext().Halls.Where(x => x.Theme.Contains(txtSearch.Text) || x.id == id).ToList();
+                else
+                    DataGridHalls.ItemsSource = MuseumEntities.GetContext().Halls.Where(x => x.Theme.Contains(txtSearch.Text)).ToList();
+            }
+
+            else
+            {
+                DataGridHalls.ItemsSource = MuseumEntities.GetContext().Halls.ToList();
+                txtSearch.Text = "Поиск";
+            }
+        }
+
+        private void txtSearch_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtSearch.Text))
+                txtSearch.Text = "Поиск";
         }
     }
 }
