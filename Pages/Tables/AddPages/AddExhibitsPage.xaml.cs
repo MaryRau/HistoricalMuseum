@@ -26,30 +26,36 @@ namespace HistoricalMuseum.Pages.AddToTables
         {
             InitializeComponent();
 
-            cmbType.ItemsSource = MuseumEntities.GetContext().ExhibitsTypes.Select(x => x.Type).ToList();
-            cmbAuthor.ItemsSource = MuseumEntities.GetContext().Authors.Select(x => x.FIOAuthor).ToList();
-            cmbEpoch.ItemsSource = MuseumEntities.GetContext().HistoricalEpochs.Select(x => x.Epoch).ToList();
-            cmbCountry.ItemsSource = MuseumEntities.GetContext().Countries.Select(x => x.Country).ToList();
+            cmbType.ItemsSource = MuseumEntities.GetContext().ExhibitsTypes.ToList();
+            cmbType.DisplayMemberPath = "Type";
+            cmbAuthor.ItemsSource = MuseumEntities.GetContext().Authors.ToList();
+            cmbAuthor.DisplayMemberPath = "FIOAuthor";
+            cmbEpoch.ItemsSource = MuseumEntities.GetContext().HistoricalEpochs.ToList();
+            cmbEpoch.DisplayMemberPath = "Epoch";
+            cmbCountry.ItemsSource = MuseumEntities.GetContext().Countries.ToList();
+            cmbCountry.DisplayMemberPath = "Country";
 
             if (selected != null)
             {
                 _currentExh = selected;
 
-                cmbType.SelectedItem = MuseumEntities.GetContext().ExhibitsTypes.Where(x => x.id == _currentExh.ExhibitType).Select(x => x.Type);
-                cmbAuthor.SelectedItem = MuseumEntities.GetContext().Authors.Where(x => x.id == _currentExh.Author).Select(x => x.FIOAuthor);
-                cmbEpoch.SelectedItem = MuseumEntities.GetContext().HistoricalEpochs.Where(x => x.id == _currentExh.HistoricalEpoch).Select(x => x.Epoch);
-                cmbCountry.SelectedItem = MuseumEntities.GetContext().Countries.Where(x => x.id == _currentExh.CreationCountry).Select(x => x.Country);
+                cmbType.SelectedItem = MuseumEntities.GetContext().ExhibitsTypes.FirstOrDefault(x => x.id == _currentExh.ExhibitType);
+                cmbAuthor.SelectedItem = MuseumEntities.GetContext().Authors.FirstOrDefault(x => x.id == _currentExh.Author);
+                cmbEpoch.SelectedItem = MuseumEntities.GetContext().HistoricalEpochs.FirstOrDefault(x => x.id == _currentExh.HistoricalEpoch);
+                cmbCountry.SelectedItem = MuseumEntities.GetContext().Countries.FirstOrDefault(x => x.id == _currentExh.CreationCountry);
             }
 
-            if (cmbType.SelectedItem == null)
-                cmbType.Text = "Обязательный";
-            if (cmbAuthor.SelectedItem == null)
-                cmbAuthor.Text = "Необязательный";
-            if (cmbEpoch.SelectedItem == null)
-                cmbEpoch.Text = "Обязательный";
-            if (cmbCountry.SelectedItem == null)
-                cmbCountry.Text = "Обязательный";
-
+            else
+            {
+                if (cmbType.SelectedItem == null)
+                    cmbType.Text = "Обязательный";
+                if (cmbAuthor.SelectedItem == null)
+                    cmbAuthor.Text = "Необязательный";
+                if (cmbEpoch.SelectedItem == null)
+                    cmbEpoch.Text = "Обязательный";
+                if (cmbCountry.SelectedItem == null)
+                    cmbCountry.Text = "Обязательный";
+            }
 
             DataContext = _currentExh;
         }
@@ -78,30 +84,34 @@ namespace HistoricalMuseum.Pages.AddToTables
                 return;
             }
 
-            int type = MuseumEntities.GetContext().ExhibitsTypes.Where(x => x.Type == cmbType.SelectedItem.ToString()).Select(x => x.id).First();
-            int? author = (int?) MuseumEntities.GetContext().Authors.Where(x => x.FIOAuthor == cmbAuthor.SelectedItem.ToString()).Select(x => x.id).First() ?? null;
-            int epoch = MuseumEntities.GetContext().HistoricalEpochs.Where(x => x.Epoch == cmbEpoch.SelectedItem.ToString()).Select(x => x.id).First();
-            int country = MuseumEntities.GetContext().Countries.Where(x => x.Country == cmbCountry.SelectedItem.ToString()).Select(x => x.id).First();
+            var selectedType = (ExhibitsTypes)cmbType.SelectedItem;
+            var selectedAuthor = (Authors)cmbAuthor.SelectedItem;
+            var selectedEpoch = (HistoricalEpochs)cmbEpoch.SelectedItem;
+            var selectedCountry = (Countries)cmbCountry.SelectedItem;
+
+            int typeId = selectedType?.id ?? 0;
+            int? authorId = selectedAuthor?.id;
+            int epochId = selectedEpoch?.id ?? 0;
+            int countryId = selectedCountry?.id ?? 0;
 
             Exhibits exhibitObject = new Exhibits
             {
                 Exhibit = txtExh.Text,
-                ExhibitType = type,
-                Author = author,
-                HistoricalEpoch = epoch,
-                CreationCountry = country,
+                ExhibitType = typeId,
+                Author = authorId,
+                HistoricalEpoch = epochId,
+                CreationCountry = countryId,
                 Description = txtDiscription.Text ?? null
             };
 
-            var exhibit = MuseumEntities.GetContext().Exhibits.AsNoTracking().FirstOrDefault(f => f.Exhibit.ToLower() == txtExh.Text.ToLower() && f.ExhibitType == type
-            && f.Author == author && f.HistoricalEpoch == epoch && f.CreationCountry == country && f.Description == txtDiscription.Text);
+            var exhibit = MuseumEntities.GetContext().Exhibits.AsNoTracking().FirstOrDefault(f => f.Exhibit.ToLower() == txtExh.Text.ToLower() && f.ExhibitType == typeId
+            && f.Author == authorId && f.HistoricalEpoch == epochId && f.CreationCountry == countryId && f.Description == txtDiscription.Text);
 
             if (_currentExh.id == 0)
             {
                 if (exhibit == null)
                 {
                     _currentExh = exhibitObject;
-                    MessageBox.Show($"{_currentExh.Exhibit}, {_currentExh.Author}");
                     MuseumEntities.GetContext().Exhibits.Add(_currentExh);
                 }
 
