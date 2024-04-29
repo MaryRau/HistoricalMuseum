@@ -28,7 +28,7 @@
         <Button Name="ButtonSave" Content="Сохранить" Grid.Row="6" Margin="0,5,0,5" Background="#FFEEDCCA" HorizontalAlignment="Center" Width="160" Grid.Column="2" FontWeight="Bold" FontSize="28" Click="ButtonSave_Click" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FFC8844E"/>
         <Button Name="ButtonCancel" Content="Отмена" Grid.Row="6" Click="ButtonCancel_Click" Margin="0,5,0,5" Background="#FFEEDCCA" HorizontalAlignment="Center" Width="160" FontWeight="Bold" FontSize="28" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FFC8844E"/>
         <TextBlock VerticalAlignment="Center" Text="Тип экспоната:" Grid.Column="0" Margin="12,22,10,22" FontSize="28" Height="38" Grid.Row="1" FontFamily="Constantia" Foreground="#FF6A6A6A"/>
-        <ComboBox Name="cmbType" Margin="37,16,40,16" VerticalContentAlignment="Center" SelectedItem="{Binding ExhibitsTypes.Type}" IsEditable="True" Grid.Row="1" Grid.Column="1" FontSize="25" Grid.ColumnSpan="2" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FF6A6A6A">
+        <ComboBox Name="cmbType" Margin="37,16,40,16" VerticalContentAlignment="Center" IsEditable="True" Grid.Row="1" Grid.Column="1" FontSize="25" Grid.ColumnSpan="2" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FF6A6A6A">
             <ComboBox.Background>
                 <LinearGradientBrush EndPoint="0,1">
                     <GradientStop Color="#FFF0F0F0"/>
@@ -37,7 +37,7 @@
             </ComboBox.Background>
         </ComboBox>
         <TextBlock VerticalAlignment="Center" Text="Автор:" Grid.Column="0" Grid.Row="2" Margin="104,0,21,0" FontSize="30" Height="38" FontFamily="Constantia" Foreground="#FF6A6A6A"/>
-        <ComboBox Name="cmbAuthor" Margin="37,16,40,16" VerticalContentAlignment="Center" SelectedItem="{Binding Authors.FIOAuthor}" IsEditable="True" Grid.Row="2" Grid.Column="1" FontSize="25" Grid.ColumnSpan="2" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FF6A6A6A">
+        <ComboBox Name="cmbAuthor" Margin="37,16,40,16" VerticalContentAlignment="Center" IsEditable="True" Grid.Row="2" Grid.Column="1" FontSize="25" Grid.ColumnSpan="2" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FF6A6A6A">
             <ComboBox.Background>
                 <LinearGradientBrush EndPoint="0,1">
                     <GradientStop Color="#FFF0F0F0"/>
@@ -46,7 +46,7 @@
             </ComboBox.Background>
         </ComboBox>
         <TextBlock VerticalAlignment="Top" TextAlignment="Right" Text="Историческая эпоха:" TextWrapping="Wrap" Grid.Column="0" Margin="30,8,21,0" FontSize="26" Height="64" Grid.Row="3" FontFamily="Constantia" Foreground="#FF6A6A6A"/>
-        <ComboBox Name="cmbEpoch" Margin="37,16,40,16" VerticalContentAlignment="Center" SelectedItem="{Binding HistoricalEpochs.Epoch}" IsEditable="True" Grid.Row="3" Grid.Column="1" FontSize="25" Grid.ColumnSpan="2" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FF6A6A6A">
+        <ComboBox Name="cmbEpoch" Margin="37,16,40,16" VerticalContentAlignment="Center" IsEditable="True" Grid.Row="3" Grid.Column="1" FontSize="25" Grid.ColumnSpan="2" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FF6A6A6A">
             <ComboBox.Background>
                 <LinearGradientBrush EndPoint="0,1">
                     <GradientStop Color="#FFF0F0F0"/>
@@ -55,7 +55,7 @@
             </ComboBox.Background>
         </ComboBox>
         <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Место создания:" TextWrapping="Wrap" Grid.Column="0" Margin="0,27,10,16" FontSize="26" Height="38" Grid.Row="4" FontFamily="Constantia" Foreground="#FF6A6A6A" Width="205"/>
-        <ComboBox Name="cmbCountry" Margin="37,16,40,16" VerticalContentAlignment="Center" SelectedItem="{Binding Countries.Country}" IsEditable="True" Grid.Row="4" Grid.Column="1" FontSize="25" Grid.ColumnSpan="2" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FF6A6A6A">
+        <ComboBox Name="cmbCountry" Margin="37,16,40,16" VerticalContentAlignment="Center" IsEditable="True" Grid.Row="4" Grid.Column="1" FontSize="25" Grid.ColumnSpan="2" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FF6A6A6A">
             <ComboBox.Background>
                 <LinearGradientBrush EndPoint="0,1">
                     <GradientStop Color="#FFF0F0F0"/>

@@ -23,16 +23,16 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
-        <Viewbox Margin="0,38"  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Center" HorizontalAlignment="Right" MaxWidth="300" MaxHeight="150" Grid.ColumnSpan="2" >
-            <TextBlock Text="Логин:" FontSize="50"   TextAlignment="Center"  FontFamily="Constantia" Foreground="#FF6A6A6A"   />
+        <Viewbox Margin="0,38"  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Center" HorizontalAlignment="Right" MaxWidth="450" MaxHeight="250" Grid.ColumnSpan="2" >
+            <TextBlock Text="Логин:" FontSize="50"   TextAlignment="Center"  FontFamily="Constantia" Foreground="#FF6A6A6A" MinHeight="60" MinWidth="155"/>
         </Viewbox>
         
         <Viewbox Margin="20,50,30,40" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" MaxHeight="110" VerticalAlignment="Center" HorizontalAlignment="Left">
             <ComboBox Name="cmbUsername" VerticalContentAlignment="Center" FontSize="70" Background="#FFEEDCCA" TextBlock.FontFamily="Constantia" MinWidth="800" MinHeight="120" BorderBrush="#FF98826C" Foreground="#FF6A6A6A" BorderThickness="2"/>
         </Viewbox>
         
-        <Viewbox  Margin="0,38" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" MaxWidth="300" MaxHeight="150" Grid.ColumnSpan="2">
-            <TextBlock Text="Пароль:"  FontSize="50" HorizontalAlignment="Right"  VerticalAlignment="Center" TextAlignment="Center" FontFamily="Constantia" Foreground="#FF6A6A6A" />
+        <Viewbox  Margin="0,38" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" MaxWidth="450" MaxHeight="250" Grid.ColumnSpan="2">
+            <TextBlock Text="Пароль:"  FontSize="50" TextAlignment="Center" FontFamily="Constantia" Foreground="#FF6A6A6A" MinHeight="60" MinWidth="180"/>
         </Viewbox>
         
         <Viewbox Margin="20,50,30,40" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" MaxHeight="110" VerticalAlignment="Center" HorizontalAlignment="Left">

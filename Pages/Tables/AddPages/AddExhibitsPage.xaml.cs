@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -78,7 +79,7 @@ namespace HistoricalMuseum.Pages.AddToTables
             }
 
             int type = MuseumEntities.GetContext().ExhibitsTypes.Where(x => x.Type == cmbType.SelectedItem.ToString()).Select(x => x.id).First();
-            int? author = MuseumEntities.GetContext().Authors.Where(x => x.FIOAuthor == cmbAuthor.SelectedItem.ToString()).Select(x => x.id).FirstOrDefault();
+            int? author = (int?) MuseumEntities.GetContext().Authors.Where(x => x.FIOAuthor == cmbAuthor.SelectedItem.ToString()).Select(x => x.id).First() ?? null;
             int epoch = MuseumEntities.GetContext().HistoricalEpochs.Where(x => x.Epoch == cmbEpoch.SelectedItem.ToString()).Select(x => x.id).First();
             int country = MuseumEntities.GetContext().Countries.Where(x => x.Country == cmbCountry.SelectedItem.ToString()).Select(x => x.id).First();
 
@@ -99,6 +100,8 @@ namespace HistoricalMuseum.Pages.AddToTables
             {
                 if (exhibit == null)
                 {
+                    _currentExh = exhibitObject;
+                    MessageBox.Show($"{_currentExh.Exhibit}, {_currentExh.Author}");
                     MuseumEntities.GetContext().Exhibits.Add(_currentExh);
                 }
 

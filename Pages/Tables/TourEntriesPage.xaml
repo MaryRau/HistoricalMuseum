@@ -25,7 +25,7 @@
             <Image Source="D:\учёба\курсач\HistoricalMuseum222222-master\search.png" Width="40"/>
         </Button>
 
-        <DataGrid Background="#FFF8ECE3" FontSize="15" Grid.Row="1" Name="DataGridEntries" AutoGenerateColumns="False" IsReadOnly="True" Grid.ColumnSpan="3" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FF6A6A6A" Margin="0,0,0,89" Grid.RowSpan="3">
+        <DataGrid Background="#FFF8ECE3" FontSize="15" Grid.Row="1" Name="DataGridEntries" AutoGenerateColumns="False" IsReadOnly="True" Grid.ColumnSpan="3" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FF6A6A6A">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Дата и время" Binding="{Binding DateAndTime}" Width="*" FontSize="20"/>
                 <DataGridTextColumn Header="Экскурсионная программа" Binding="{Binding TourPrograms.TourTheme}" Width="*" FontSize="20"/>
