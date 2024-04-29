@@ -428,6 +428,11 @@
     <Resource Include="Resources\search.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\del.png" />
+    <Resource Include="Resources\back.png" />
+    <Resource Include="Resources\add.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="HistoricalMuseumModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>HistoricalMuseumModel.edmx</DependentUpon>
@@ -438,9 +443,6 @@
       <DependentUpon>HistoricalMuseumModel.edmx</DependentUpon>
       <LastGenOutput>HistoricalMuseumModel.cs</LastGenOutput>
     </Content>
-    <Resource Include="Resources\del.png" />
-    <Resource Include="Resources\back.png" />
-    <Resource Include="Resources\add.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

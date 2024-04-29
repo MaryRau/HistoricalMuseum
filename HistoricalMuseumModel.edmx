@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="HistoricalMuseumModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище HistoricalMuseumModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Authors">
           <Key>
             <PropertyRef Name="id" />
@@ -114,8 +114,8 @@
           <Property Name="User" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'HistoricalMuseumCourseProject.dbo.GuidedToursView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "HistoricalMuseumCourseProject.dbo.GuidedToursView" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="GuidedToursView">
           <Key>
             <PropertyRef Name="FIOStaff" />
@@ -123,8 +123,8 @@ warning 6002: The table/view 'HistoricalMuseumCourseProject.dbo.GuidedToursView'
           <Property Name="FIOStaff" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="GuidedTours" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'HistoricalMuseumCourseProject.dbo.PopulariryPfProgram' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "HistoricalMuseumCourseProject.dbo.PopulariryPfProgram" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="PopulariryPfProgram">
           <Key>
             <PropertyRef Name="TourTheme" />
@@ -132,7 +132,7 @@ warning 6002: The table/view 'HistoricalMuseumCourseProject.dbo.PopulariryPfProg
           <Property Name="TourTheme" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="PupolarityOfProgram" Type="int" />
         </EntityType>
-        <Association Name="FK__HallsInTo__TourP__4E88ABD4">
+        <Association Name="FK__HallsInTo__TourP__59063A47">
           <End Role="TourPrograms" Type="Self.TourPrograms" Multiplicity="1" />
           <End Role="HallsInTourPrograms" Type="Self.HallsInTourPrograms" Multiplicity="*" />
           <ReferentialConstraint>
@@ -144,7 +144,7 @@ warning 6002: The table/view 'HistoricalMuseumCourseProject.dbo.PopulariryPfProg
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Staff__Post__52593CB8">
+        <Association Name="FK__Staff__Post__5AEE82B9">
           <End Role="Posts" Type="Self.Posts" Multiplicity="1" />
           <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
           <ReferentialConstraint>
@@ -156,7 +156,7 @@ warning 6002: The table/view 'HistoricalMuseumCourseProject.dbo.PopulariryPfProg
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TourEntri__Guide__5165187F">
+        <Association Name="FK__TourEntri__Guide__5BE2A6F2">
           <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
           <End Role="TourEntries" Type="Self.TourEntries" Multiplicity="*" />
           <ReferentialConstraint>
@@ -168,7 +168,7 @@ warning 6002: The table/view 'HistoricalMuseumCourseProject.dbo.PopulariryPfProg
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TourEntri__TourP__5070F446">
+        <Association Name="FK__TourEntri__TourP__5CD6CB2B">
           <End Role="TourPrograms" Type="Self.TourPrograms" Multiplicity="1" />
           <End Role="TourEntries" Type="Self.TourEntries" Multiplicity="*" />
           <ReferentialConstraint>
@@ -266,17 +266,17 @@ warning 6002: The table/view 'HistoricalMuseumCourseProject.dbo.PopulariryPfProg
         </Association>
         <Association Name="FK_Экспонаты_Тип">
           <End Role="ExhibitsTypes" Type="Self.ExhibitsTypes" Multiplicity="1" />
-          <End Role="Exhibits" Type="Self.Exhibits" Multiplicity="0..1" />
+          <End Role="Exhibits" Type="Self.Exhibits" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ExhibitsTypes">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Exhibits">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="ExhibitType" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="HistoricalMuseumModelStoreContainer">
+        <EntityContainer Name="Хранилище HistoricalMuseumModelContainer">
           <EntitySet Name="Authors" EntityType="Self.Authors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Exhibits" EntityType="Self.Exhibits" Schema="dbo" store:Type="Tables" />
@@ -303,19 +303,19 @@ warning 6002: The table/view 'HistoricalMuseumCourseProject.dbo.PopulariryPfProg
     [PopulariryPfProgram].[PupolarityOfProgram] AS [PupolarityOfProgram]
     FROM [dbo].[PopulariryPfProgram] AS [PopulariryPfProgram]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__HallsInTo__TourP__4E88ABD4" Association="Self.FK__HallsInTo__TourP__4E88ABD4">
+          <AssociationSet Name="FK__HallsInTo__TourP__59063A47" Association="Self.FK__HallsInTo__TourP__59063A47">
             <End Role="TourPrograms" EntitySet="TourPrograms" />
             <End Role="HallsInTourPrograms" EntitySet="HallsInTourPrograms" />
           </AssociationSet>
-          <AssociationSet Name="FK__Staff__Post__52593CB8" Association="Self.FK__Staff__Post__52593CB8">
+          <AssociationSet Name="FK__Staff__Post__5AEE82B9" Association="Self.FK__Staff__Post__5AEE82B9">
             <End Role="Posts" EntitySet="Posts" />
             <End Role="Staff" EntitySet="Staff" />
           </AssociationSet>
-          <AssociationSet Name="FK__TourEntri__Guide__5165187F" Association="Self.FK__TourEntri__Guide__5165187F">
+          <AssociationSet Name="FK__TourEntri__Guide__5BE2A6F2" Association="Self.FK__TourEntri__Guide__5BE2A6F2">
             <End Role="Staff" EntitySet="Staff" />
             <End Role="TourEntries" EntitySet="TourEntries" />
           </AssociationSet>
-          <AssociationSet Name="FK__TourEntri__TourP__5070F446" Association="Self.FK__TourEntri__TourP__5070F446">
+          <AssociationSet Name="FK__TourEntri__TourP__5CD6CB2B" Association="Self.FK__TourEntri__TourP__5CD6CB2B">
             <End Role="TourPrograms" EntitySet="TourPrograms" />
             <End Role="TourEntries" EntitySet="TourEntries" />
           </AssociationSet>
@@ -434,7 +434,7 @@ warning 6002: The table/view 'HistoricalMuseumCourseProject.dbo.PopulariryPfProg
           <Property Name="TourProgram" Type="Int32" Nullable="false" />
           <Property Name="Hall" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Halls" Relationship="Self.FK__Залы_в_экск__Зал__3B75D760" FromRole="HallsInTourPrograms" ToRole="Halls" />
-          <NavigationProperty Name="TourPrograms" Relationship="Self.FK__HallsInTo__TourP__4E88ABD4" FromRole="HallsInTourPrograms" ToRole="TourPrograms" />
+          <NavigationProperty Name="TourPrograms" Relationship="Self.FK__HallsInTo__TourP__59063A47" FromRole="HallsInTourPrograms" ToRole="TourPrograms" />
         </EntityType>
         <EntityType Name="HistoricalEpochs">
           <Key>
@@ -450,7 +450,7 @@ warning 6002: The table/view 'HistoricalMuseumCourseProject.dbo.PopulariryPfProg
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Post" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Staff" Relationship="Self.FK__Staff__Post__52593CB8" FromRole="Posts" ToRole="Staff" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK__Staff__Post__5AEE82B9" FromRole="Posts" ToRole="Staff" />
         </EntityType>
         <EntityType Name="Staff">
           <Key>
@@ -459,8 +459,8 @@ warning 6002: The table/view 'HistoricalMuseumCourseProject.dbo.PopulariryPfProg
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FIOStaff" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Post" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Posts" Relationship="Self.FK__Staff__Post__52593CB8" FromRole="Staff" ToRole="Posts" />
-          <NavigationProperty Name="TourEntries" Relationship="Self.FK__TourEntri__Guide__5165187F" FromRole="Staff" ToRole="TourEntries" />
+          <NavigationProperty Name="Posts" Relationship="Self.FK__Staff__Post__5AEE82B9" FromRole="Staff" ToRole="Posts" />
+          <NavigationProperty Name="TourEntries" Relationship="Self.FK__TourEntri__Guide__5BE2A6F2" FromRole="Staff" ToRole="TourEntries" />
         </EntityType>
         <EntityType Name="TourEntries">
           <Key>
@@ -470,8 +470,8 @@ warning 6002: The table/view 'HistoricalMuseumCourseProject.dbo.PopulariryPfProg
           <Property Name="DateAndTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="TourProgram" Type="Int32" Nullable="false" />
           <Property Name="Guide" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Staff" Relationship="Self.FK__TourEntri__Guide__5165187F" FromRole="TourEntries" ToRole="Staff" />
-          <NavigationProperty Name="TourPrograms" Relationship="Self.FK__TourEntri__TourP__5070F446" FromRole="TourEntries" ToRole="TourPrograms" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK__TourEntri__Guide__5BE2A6F2" FromRole="TourEntries" ToRole="Staff" />
+          <NavigationProperty Name="TourPrograms" Relationship="Self.FK__TourEntri__TourP__5CD6CB2B" FromRole="TourEntries" ToRole="TourPrograms" />
         </EntityType>
         <EntityType Name="TourPrograms">
           <Key>
@@ -479,8 +479,8 @@ warning 6002: The table/view 'HistoricalMuseumCourseProject.dbo.PopulariryPfProg
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TourTheme" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="HallsInTourPrograms" Relationship="Self.FK__HallsInTo__TourP__4E88ABD4" FromRole="TourPrograms" ToRole="HallsInTourPrograms" />
-          <NavigationProperty Name="TourEntries" Relationship="Self.FK__TourEntri__TourP__5070F446" FromRole="TourPrograms" ToRole="TourEntries" />
+          <NavigationProperty Name="HallsInTourPrograms" Relationship="Self.FK__HallsInTo__TourP__59063A47" FromRole="TourPrograms" ToRole="HallsInTourPrograms" />
+          <NavigationProperty Name="TourEntries" Relationship="Self.FK__TourEntri__TourP__5CD6CB2B" FromRole="TourPrograms" ToRole="TourEntries" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -566,13 +566,13 @@ warning 6002: The table/view 'HistoricalMuseumCourseProject.dbo.PopulariryPfProg
         </Association>
         <Association Name="FK_Экспонаты_Тип">
           <End Role="ExhibitsTypes" Type="Self.ExhibitsTypes" Multiplicity="1" />
-          <End Role="Exhibits" Type="Self.Exhibits" Multiplicity="0..1" />
+          <End Role="Exhibits" Type="Self.Exhibits" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ExhibitsTypes">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Exhibits">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="ExhibitType" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -600,7 +600,7 @@ warning 6002: The table/view 'HistoricalMuseumCourseProject.dbo.PopulariryPfProg
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HallsInTo__TourP__4E88ABD4">
+        <Association Name="FK__HallsInTo__TourP__59063A47">
           <End Role="TourPrograms" Type="Self.TourPrograms" Multiplicity="1" />
           <End Role="HallsInTourPrograms" Type="Self.HallsInTourPrograms" Multiplicity="*" />
           <ReferentialConstraint>
@@ -612,7 +612,7 @@ warning 6002: The table/view 'HistoricalMuseumCourseProject.dbo.PopulariryPfProg
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Staff__Post__52593CB8">
+        <Association Name="FK__Staff__Post__5AEE82B9">
           <End Role="Posts" Type="Self.Posts" Multiplicity="1" />
           <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
           <ReferentialConstraint>
@@ -624,7 +624,7 @@ warning 6002: The table/view 'HistoricalMuseumCourseProject.dbo.PopulariryPfProg
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TourEntri__Guide__5165187F">
+        <Association Name="FK__TourEntri__Guide__5BE2A6F2">
           <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
           <End Role="TourEntries" Type="Self.TourEntries" Multiplicity="*" />
           <ReferentialConstraint>
@@ -636,7 +636,7 @@ warning 6002: The table/view 'HistoricalMuseumCourseProject.dbo.PopulariryPfProg
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TourEntri__TourP__5070F446">
+        <Association Name="FK__TourEntri__TourP__5CD6CB2B">
           <End Role="TourPrograms" Type="Self.TourPrograms" Multiplicity="1" />
           <End Role="TourEntries" Type="Self.TourEntries" Multiplicity="*" />
           <ReferentialConstraint>
@@ -697,19 +697,19 @@ warning 6002: The table/view 'HistoricalMuseumCourseProject.dbo.PopulariryPfProg
             <End Role="Halls" EntitySet="Halls" />
             <End Role="HallsInTourPrograms" EntitySet="HallsInTourPrograms" />
           </AssociationSet>
-          <AssociationSet Name="FK__HallsInTo__TourP__4E88ABD4" Association="Self.FK__HallsInTo__TourP__4E88ABD4">
+          <AssociationSet Name="FK__HallsInTo__TourP__59063A47" Association="Self.FK__HallsInTo__TourP__59063A47">
             <End Role="TourPrograms" EntitySet="TourPrograms" />
             <End Role="HallsInTourPrograms" EntitySet="HallsInTourPrograms" />
           </AssociationSet>
-          <AssociationSet Name="FK__Staff__Post__52593CB8" Association="Self.FK__Staff__Post__52593CB8">
+          <AssociationSet Name="FK__Staff__Post__5AEE82B9" Association="Self.FK__Staff__Post__5AEE82B9">
             <End Role="Posts" EntitySet="Posts" />
             <End Role="Staff" EntitySet="Staff" />
           </AssociationSet>
-          <AssociationSet Name="FK__TourEntri__Guide__5165187F" Association="Self.FK__TourEntri__Guide__5165187F">
+          <AssociationSet Name="FK__TourEntri__Guide__5BE2A6F2" Association="Self.FK__TourEntri__Guide__5BE2A6F2">
             <End Role="Staff" EntitySet="Staff" />
             <End Role="TourEntries" EntitySet="TourEntries" />
           </AssociationSet>
-          <AssociationSet Name="FK__TourEntri__TourP__5070F446" Association="Self.FK__TourEntri__TourP__5070F446">
+          <AssociationSet Name="FK__TourEntri__TourP__5CD6CB2B" Association="Self.FK__TourEntri__TourP__5CD6CB2B">
             <End Role="TourPrograms" EntitySet="TourPrograms" />
             <End Role="TourEntries" EntitySet="TourEntries" />
           </AssociationSet>
@@ -719,7 +719,7 @@ warning 6002: The table/view 'HistoricalMuseumCourseProject.dbo.PopulariryPfProg
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="HistoricalMuseumModelStoreContainer" CdmEntityContainer="MuseumEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище HistoricalMuseumModelContainer" CdmEntityContainer="MuseumEntities">
           <EntitySetMapping Name="Authors">
             <EntityTypeMapping TypeName="HistoricalMuseumModel.Authors">
               <MappingFragment StoreEntitySet="Authors">
@@ -876,7 +876,7 @@ warning 6002: The table/view 'HistoricalMuseumCourseProject.dbo.PopulariryPfProg
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

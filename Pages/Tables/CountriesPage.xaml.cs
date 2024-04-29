@@ -36,7 +36,7 @@ namespace HistoricalMuseum.Pages
                 NavigationService.Navigate(new DirMuseumPage());
         }
 
-        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AddCountryPage(null));
         }
@@ -50,7 +50,7 @@ namespace HistoricalMuseum.Pages
             }
         }
 
-        private void ButtonDel_Click(object sender, RoutedEventArgs e)
+        private void btnDel_Click(object sender, RoutedEventArgs e)
         {
             var elemForRemoving = DataGridCountries.SelectedItems.Cast<Countries>().ToList();
 
@@ -107,6 +107,18 @@ namespace HistoricalMuseum.Pages
         {
             if (string.IsNullOrWhiteSpace(txtSearch.Text))
                 txtSearch.Text = "Поиск";
+        }
+
+        private void btn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            (sender as Border).Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#FFCFBDAB");
+            (sender as Border).BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF7A6653");
+        }
+
+        private void btn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            (sender as Border).Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#FFEEDCCA");
+            (sender as Border).BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF98826C");
         }
     }
 }

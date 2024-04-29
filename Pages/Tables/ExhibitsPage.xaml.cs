@@ -59,7 +59,6 @@ namespace HistoricalMuseum
         private void btnDel_Click(object sender, RoutedEventArgs e)
         {
             var elemForRemoving = DataGridExhibits.SelectedItems.Cast<Exhibits>().ToList();
-
             if (MessageBox.Show($"Вы точно хотите удалить записи в количестве {elemForRemoving.Count()} элементов?", "Внимание",
                             MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
@@ -112,52 +111,16 @@ namespace HistoricalMuseum
                 txtSearch.Text = "Поиск";
         }
 
-        private void btnAdd_MouseEnter(object sender, MouseEventArgs e)
+        private void btn_MouseEnter(object sender, MouseEventArgs e)
         {
-            borderBtnAdd.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#FFCFBDAB");
-            borderBtnAdd.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF7A6653");
+            (sender as Border).Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#FFCFBDAB");
+            (sender as Border).BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF7A6653");
         }
 
-        private void btnAdd_MouseLeave(object sender, MouseEventArgs e)
+        private void btn_MouseLeave(object sender, MouseEventArgs e)
         {
-            borderBtnAdd.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#FFEEDCCA");
-            borderBtnAdd.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF98826C");
-        }
-
-        private void btnBack_MouseEnter(object sender, MouseEventArgs e)
-        {
-            borderBtnBack.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#FFCFBDAB");
-            borderBtnBack.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF7A6653");
-        }
-
-        private void btnBack_MouseLeave(object sender, MouseEventArgs e)
-        {
-            borderBtnBack.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#FFEEDCCA");
-            borderBtnBack.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF98826C");
-        }
-
-        private void btnDel_MouseEnter(object sender, MouseEventArgs e)
-        {
-            borderBtnDel.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#FFCFBDAB");
-            borderBtnDel.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF7A6653");
-        }
-
-        private void btnDel_MouseLeave(object sender, MouseEventArgs e)
-        {
-            borderBtnDel.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#FFEEDCCA");
-            borderBtnDel.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF98826C");
-        }
-
-        private void btnSearch_MouseEnter(object sender, MouseEventArgs e)
-        {
-            borderBtnSearch.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#FFCFBDAB");
-            borderBtnSearch.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF7A6653");
-        }
-
-        private void btnSearch_MouseLeave(object sender, MouseEventArgs e)
-        {
-            borderBtnSearch.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#FFEEDCCA");
-            borderBtnSearch.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF98826C");
+            (sender as Border).Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#FFEEDCCA");
+            (sender as Border).BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF98826C");
         }
     }
 }
