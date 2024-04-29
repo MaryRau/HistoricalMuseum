@@ -47,14 +47,11 @@ namespace HistoricalMuseum.Pages.AddToTables
 
             else
             {
-                if (cmbType.SelectedItem == null)
-                    cmbType.Text = "Обязательный";
+                cmbType.Text = "Обязательный";
                 if (cmbAuthor.SelectedItem == null)
                     cmbAuthor.Text = "Необязательный";
-                if (cmbEpoch.SelectedItem == null)
-                    cmbEpoch.Text = "Обязательный";
-                if (cmbCountry.SelectedItem == null)
-                    cmbCountry.Text = "Обязательный";
+                cmbEpoch.Text = "Обязательный";
+                cmbCountry.Text = "Обязательный";
             }
 
             DataContext = _currentExh;
@@ -89,10 +86,10 @@ namespace HistoricalMuseum.Pages.AddToTables
             var selectedEpoch = (HistoricalEpochs)cmbEpoch.SelectedItem;
             var selectedCountry = (Countries)cmbCountry.SelectedItem;
 
-            int typeId = selectedType?.id ?? 0;
+            int typeId = selectedType.id;
             int? authorId = selectedAuthor?.id;
-            int epochId = selectedEpoch?.id ?? 0;
-            int countryId = selectedCountry?.id ?? 0;
+            int epochId = selectedEpoch.id;
+            int countryId = selectedCountry.id;
 
             Exhibits exhibitObject = new Exhibits
             {

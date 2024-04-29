@@ -27,20 +27,44 @@ namespace HistoricalMuseum.Pages.AddToTables
         {
             InitializeComponent();
 
-            cmbExh.ItemsSource = MuseumEntities.GetContext().Exhibits.Select(x => x.Exhibit).ToList();
-            cmbHall.ItemsSource = MuseumEntities.GetContext().Halls.Select(x => x.Theme).ToList();
+            var exhibitsInHallsIds = MuseumEntities.GetContext().ExhibitsInHalls.Select(x => x.Exhibit).ToList();
+            var exhibitsInStoreIds = MuseumEntities.GetContext().ExhibitsInStoreroom.Select(x => x.Exhibit).ToList();
+
+            int length = MuseumEntities.GetContext().Exhibits
+                .Where(x => !exhibitsInHallsIds.Contains(x.id) && !exhibitsInStoreIds.Contains(x.id))
+                .ToList().Count();
+
+            cmbExh.ItemsSource = MuseumEntities.GetContext().Exhibits
+                .Where(x => !exhibitsInHallsIds.Contains(x.id) && !exhibitsInStoreIds.Contains(x.id))
+                .ToList();
+            cmbExh.DisplayMemberPath = "Exhibit";
+            cmbHall.ItemsSource = MuseumEntities.GetContext().Halls.ToList();
+            cmbHall.DisplayMemberPath = "Theme";
+
+            if (length == 0)
+            {
+                cmbExh.Text = "Невозможно разместить ни один экспонат!";
+                // настроить кнопку сохранения невидимой
+            }
+
 
             if (selected != null)
+            {
                 _current = selected;
+                cmbExh.SelectedItem = MuseumEntities.GetContext().Exhibits.FirstOrDefault(x => x.id == _current.Exhibit);
+                cmbHall.SelectedItem = MuseumEntities.GetContext().Halls.FirstOrDefault(x => x.id == _current.Hall);
+            }
+
+            else
+            {
+                
+                if (length == 0)
+                    cmbExh.Text = "Невозможно разместить ни один экспонат!";
+                else cmbExh.Text = "Обязательный";
+                cmbHall.Text = "Обязательный";
+            }
 
             DataContext = _current;
-            cmbHall.ItemsSource = MuseumEntities.GetContext().Halls.Select(x => x.Theme).ToList();
-            cmbExh.ItemsSource = MuseumEntities.GetContext().Exhibits.Select(x => x.Exhibit).ToList();
-
-            if (cmbExh.SelectedItem == null)
-                cmbExh.Text = "Обязательный";
-            if (cmbHall.SelectedItem == null)
-                cmbHall.Text = "Обязательный";
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
@@ -63,21 +87,26 @@ namespace HistoricalMuseum.Pages.AddToTables
                 return;
             }
 
-            int exh = MuseumEntities.GetContext().Exhibits.Where(x => x.Exhibit == cmbExh.Text).Select(x => x.id).First();
-            int hall = MuseumEntities.GetContext().Halls.Where(x => x.Theme == cmbHall.Text).Select(x => x.id).First();
+            var selectedExh = (Exhibits)cmbExh.SelectedItem;
+            var selectedHall = (Halls)cmbHall.SelectedItem;
+
+            int exhId = selectedExh.id;
+            int hallId = selectedHall.id;
+
             ExhibitsInHalls exInHallsObject = new ExhibitsInHalls
             {
-                Exhibit = exh,
-                Hall = hall
+                Exhibit = exhId,
+                Hall = hallId
             };
 
-            var exhInHalls = MuseumEntities.GetContext().ExhibitsInHalls.AsNoTracking().FirstOrDefault(f => f.Exhibit == exh && f.Hall == hall);
+            var exhInHalls = MuseumEntities.GetContext().ExhibitsInHalls.AsNoTracking().FirstOrDefault(f => f.Exhibit == exhId && f.Hall == hallId);
 
 
             if (_current.id == 0)
             {
                 if (exhInHalls == null)
                 {
+                    _current = exInHallsObject;
                     MuseumEntities.GetContext().ExhibitsInHalls.Add(_current);}
 
                 else
