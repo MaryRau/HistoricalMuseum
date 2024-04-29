@@ -10,48 +10,110 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="75*"/>
+            <ColumnDefinition Width="75*"/>
+            <ColumnDefinition Width="225*"/>
+            <ColumnDefinition Width="75*"/>
+            <ColumnDefinition Width="75*"/>
+            <ColumnDefinition Width="225*"/>
+            <ColumnDefinition Width="75*"/>
+            <ColumnDefinition Width="75*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="50*"/>
         </Grid.RowDefinitions>
+
+        <Viewbox Margin="25,10" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" HorizontalAlignment="Center" MaxWidth="800">
+            <TextBlock Text="Информация об экспонатах:" TextAlignment="Center" TextDecorations="Underline" FontFamily="Constantia" Foreground="#FF6A6A6A"/>
+        </Viewbox>
+
+        <Viewbox Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Center" MaxWidth="700">
+            <TextBlock Text="Прочее:" TextAlignment="Center" TextDecorations="Underline" FontFamily="Constantia" Foreground="#FF6A6A6A" MinWidth="120"/>
+        </Viewbox>
+
+        <Border Name="brdrBtnExh" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" CornerRadius="5" UseLayoutRounding="False" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MouseDown="btnExh_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MaxWidth="500" MaxHeight="200">
+            <Viewbox Margin="60,5" MinWidth="100">
+                <TextBlock Text="Экспонаты" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold"/>
+            </Viewbox>
+        </Border>
+
+        <Border Name="brdrBtnAuthors" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" CornerRadius="5" UseLayoutRounding="False" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MouseDown="btnAuthors_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MaxWidth="500" MaxHeight="200">
+            <Viewbox Margin="80,5" MinWidth="100">
+                <TextBlock Text="Авторы" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold"/>
+            </Viewbox>
+        </Border>
+
+        <Border Name="brdrBtnEpochs" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" CornerRadius="5" UseLayoutRounding="False" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MouseDown="btnEpoches_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MaxWidth="500" MaxHeight="200">
+            <Viewbox Margin="5,5" MinWidth="250">
+                <TextBlock Text="Исторические эпохи" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold"/>
+            </Viewbox>
+        </Border>
+
+        <Border Name="brdrBtnTypes" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" CornerRadius="5" UseLayoutRounding="False" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MouseDown="btnTypes_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MaxWidth="500" MaxHeight="200">
+            <Viewbox Margin="5,5" MinWidth="250">
+                <TextBlock Text="Типы экспонатов" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold"/>
+            </Viewbox>
+        </Border>
+
+        <Border Name="brdrBtnCountries" Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2" CornerRadius="5" UseLayoutRounding="False" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MouseDown="btnCountries_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MaxWidth="500" MaxHeight="200">
+            <Viewbox Margin="80,5" MinWidth="100">
+                <TextBlock Text="Страны" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold"/>
+            </Viewbox>
+        </Border>
+
+        <Border Name="brdrBtnHalls" Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="2" CornerRadius="5" UseLayoutRounding="False" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MouseDown="btnHalls_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MaxWidth="500" MaxHeight="200">
+            <Viewbox Margin="95,5" MinWidth="100">
+                <TextBlock Text="Залы" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold"/>
+            </Viewbox>
+        </Border>
+
+        <Border Name="brdrBtnExhInHalls" Grid.Row="4" Grid.Column="5" Grid.ColumnSpan="2" CornerRadius="5" UseLayoutRounding="False" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MouseDown="btnExhInHalls_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MaxWidth="500" MaxHeight="200">
+            <Viewbox Margin="5,5" MinWidth="250">
+                <TextBlock Text="Экспонаты в залах" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold"/>
+            </Viewbox>
+        </Border>
+
+        <Border Name="brdrBtnExhInStoreroom" Grid.Row="6" Grid.Column="5" Grid.ColumnSpan="2" CornerRadius="5" UseLayoutRounding="False" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MouseDown="btnExhInStoreroom_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MaxWidth="500" MaxHeight="200">
+            <Viewbox Margin="5,5" MinWidth="250">
+                <TextBlock Text="Экспонаты в запаснике" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold"/>
+            </Viewbox>
+        </Border>
+
+        <Border Name="brdrBtnStaff" Grid.Row="8" Grid.Column="5" Grid.ColumnSpan="2" CornerRadius="5" UseLayoutRounding="False" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MouseDown="btnStaff_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MaxWidth="500" MaxHeight="200">
+            <Viewbox Margin="50,5" MinWidth="100">
+                <TextBlock Text="Сотрудники" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold"/>
+            </Viewbox>
+        </Border>
+
+        <Border Name="brdrBtnPosts" Grid.Row="10" Grid.Column="5" Grid.ColumnSpan="2" CornerRadius="5" UseLayoutRounding="False" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MouseDown="btnPosts_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MaxWidth="500" MaxHeight="200">
+            <Viewbox Margin="50,5" MinWidth="100">
+                <TextBlock Text="Должности" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold"/>
+            </Viewbox>
+        </Border>
         
-        <TextBlock Text="Информация об экспонатах:" TextWrapping="Wrap" Grid.Column="0" Grid.Row="0" FontSize="28" Margin="5,13,5,13" TextAlignment="Center" TextDecorations="Underline" Grid.ColumnSpan="2" FontFamily="Constantia" Foreground="#FF6A6A6A"/>
-        
-        <Button Name="btnAuthors" Content="Авторы" HorizontalAlignment="Center" Height="55" VerticalAlignment="Center" Width="268" FontSize="30" Background="#FFEEDCCA" Foreground="#FFC8844E" FontWeight="Bold" BorderBrush="#FF98826C" Grid.Row="2" Click="btnAuthors_Click" Grid.ColumnSpan="2" FontFamily="Constantia"/>
-        
-        <Button Name="btnExh" Content="Экспонаты" HorizontalAlignment="Center" Height="55" VerticalAlignment="Center" Width="268" Grid.Row="1" FontSize="30" Background="#FFEEDCCA" Foreground="#FFC8844E" FontWeight="Bold" BorderBrush="#FF98826C" Click="btnExh_Click" Grid.ColumnSpan="2" FontFamily="Constantia"/>
-        
-        <TextBlock Text="Прочее:" TextWrapping="Wrap" Grid.Column="2" Grid.Row="0" FontSize="28" Margin="10,13,0,13" TextAlignment="Center" TextDecorations="Underline" Grid.ColumnSpan="2" FontFamily="Constantia" Foreground="#FF6A6A6A"/>
-        
-        <Button Name="btnEpoches" Content="Эпохи" HorizontalAlignment="Center" Height="55" VerticalAlignment="Center" Width="268" FontSize="30" Background="#FFEEDCCA" Foreground="#FFC8844E" FontWeight="Bold" BorderBrush="#FF98826C" Grid.Row="3" Click="btnEpoches_Click" Grid.ColumnSpan="2" FontFamily="Constantia"/>
-        
-        <Button Name="btnTypes" Content="Типы" HorizontalAlignment="Center" Height="55" VerticalAlignment="Center" Width="268" FontSize="30" Background="#FFEEDCCA" Foreground="#FFC8844E" FontWeight="Bold" BorderBrush="#FF98826C" Grid.Row="4" Click="btnTypes_Click" Grid.ColumnSpan="2" FontFamily="Constantia"/>
-        
-        <Button Name="btnCountries" Content="Страны" HorizontalAlignment="Center" Height="55" VerticalAlignment="Center" Width="268" FontSize="30" Background="#FFEEDCCA" Foreground="#FFC8844E" FontWeight="Bold" BorderBrush="#FF98826C" Grid.Row="5" Click="btnCountries_Click" Grid.ColumnSpan="2" FontFamily="Constantia"/>
-        
-        <Button Name="btnHalls" Content="Залы" HorizontalAlignment="Left" Height="55" VerticalAlignment="Center" Width="268" Grid.Column="2" Grid.Row="1" FontSize="30" Background="#FFEEDCCA" Foreground="#FFC8844E" FontWeight="Bold" BorderBrush="#FF98826C" Click="btnHalls_Click" Grid.ColumnSpan="2" Margin="96,13,0,13" FontFamily="Constantia"/>
-        
-        <Button Name="btnExhInHalls" Content="Экспонаты в залах" HorizontalAlignment="Left" Height="55" VerticalAlignment="Center" Width="268" Grid.Column="2" Grid.Row="2" FontSize="26" Background="#FFEEDCCA" Foreground="#FFC8844E" FontWeight="Bold" BorderBrush="#FF98826C" Click="btnExhInHalls_Click" Grid.ColumnSpan="2" Margin="96,13,0,13" FontFamily="Constantia"/>
-        
-        <Button Name="btnExhInStoreroom" Content="Экспонаты в запаснике" HorizontalAlignment="Left" Height="55" VerticalAlignment="Center" Width="268" Grid.Column="2" Grid.Row="3" FontSize="23" Background="#FFEEDCCA" Foreground="#FFC8844E" FontWeight="Bold" BorderBrush="#FF98826C" Click="btnExhInStoreroom_Click" Grid.ColumnSpan="2" Margin="96,12,0,13" FontFamily="Constantia"/>
-        
-        <Button Name="btnStaff" Content="Сотрудники" HorizontalAlignment="Left" Height="55" VerticalAlignment="Center" Width="268" Grid.Column="2" Grid.Row="4" FontSize="30" Background="#FFEEDCCA" Foreground="#FFC8844E" FontWeight="Bold" BorderBrush="#FF98826C" Click="btnStaff_Click" Grid.ColumnSpan="2" Margin="96,13,0,12" FontFamily="Constantia"/>
-        
-        <Button Name="btnPosts" Content="Должности" HorizontalAlignment="Left" Height="55" VerticalAlignment="Center" Width="268" Grid.Column="2" Grid.Row="5" FontSize="30" Background="#FFEEDCCA" Foreground="#FFC8844E" FontWeight="Bold" BorderBrush="#FF98826C" Click="btnPosts_Click" Grid.ColumnSpan="2" Margin="96,12,0,13" FontFamily="Constantia"/>
-        
-        <Button Name="btnExit" Content="Выйти" HorizontalAlignment="Center" Height="42" VerticalAlignment="Center" Width="114" FontSize="35" Foreground="#FF6A6A6A" BorderBrush="#00707070" Background="#00DDDDDD" Grid.Row="6" Grid.Column="3" Click="btnExit_Click" FontFamily="Constantia"/>
-        
-        <Button Name="btnBack" Content="Назад" HorizontalAlignment="Center" Height="42" VerticalAlignment="Center" Width="133" FontSize="35" Foreground="#FF6A6A6A" BorderBrush="#00707070" Background="#00DDDDDD" FontFamily="Constantia" Grid.Row="6" Click="btnBack_Click"/>
+        <Border Name="brdrBtnExit" Margin="10,0" Grid.Row="12" Grid.Column="6" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" MouseDown="btnExit_Click" MaxWidth="200" MaxHeight="150">
+            <Viewbox Margin="5,5,5,5">
+                <TextBlock Name="btnExit" Text="Выйти" FontFamily="Constantia" Foreground="#FF6A6A6A" TextDecorations="Underline" MouseEnter="btnExit_MouseEnter" MouseLeave="btnExit_MouseLeave"/>
+            </Viewbox>
+        </Border>
+
+        <Border Name="brdrBtnBack" Margin="10,0" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" MouseDown="btnBack_Click" MaxWidth="200" MaxHeight="150">
+            <Viewbox Margin="5,5,5,5">
+                <TextBlock Name="btnBack" Text="Назад" FontFamily="Constantia" Foreground="#FF6A6A6A" TextDecorations="Underline" MouseEnter="btnExit_MouseEnter" MouseLeave="btnExit_MouseLeave"/>
+            </Viewbox>
+        </Border>
     </Grid>
 
 </Page>

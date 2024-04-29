@@ -51,7 +51,7 @@ namespace HistoricalMuseum.Pages
             }
         }
 
-        private void btn_Click(object sender, RoutedEventArgs e)
+        private void btnDel_Click(object sender, RoutedEventArgs e)
         {
             var elemForRemoving = DataGridEpochs.SelectedItems.Cast<HistoricalEpochs>().ToList();
 

@@ -75,7 +75,7 @@ namespace HistoricalMuseum
 
         private void btnExhInHalls_Click(object sender, RoutedEventArgs e)
         {
-            CountriesPage.GetFromPage(Page);
+            ExhibitsInHallsPage.GetFromPage(Page);
             NavigationService.Navigate(new ExhibitsInHallsPage());
         }
 
@@ -93,6 +93,30 @@ namespace HistoricalMuseum
         private void btnPosts_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new PostsPage());
+        }
+
+        private void btn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            (sender as Border).Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#FFCFBDAB");
+            (sender as Border).BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF7A6653");
+        }
+
+        private void btn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            (sender as Border).Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#FFEEDCCA");
+            (sender as Border).BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF98826C");
+        }
+
+        private void btnExit_MouseEnter(object sender, MouseEventArgs e)
+        {
+            (sender as TextBlock).Foreground = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF313131");
+            (sender as TextBlock).TextDecorations = TextDecorations.Baseline;
+        }
+
+        private void btnExit_MouseLeave(object sender, MouseEventArgs e)
+        {
+            (sender as TextBlock).Foreground = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF6A6A6A");
+            (sender as TextBlock).TextDecorations = TextDecorations.Underline;
         }
     }
 }

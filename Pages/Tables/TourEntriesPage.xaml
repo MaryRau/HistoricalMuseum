@@ -10,8 +10,12 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="450*"/>
-            <ColumnDefinition Width="397*"/>
+            <ColumnDefinition Width="97*"/>
+            <ColumnDefinition Width="315*"/>
+            <ColumnDefinition Width="49*"/>
+            <ColumnDefinition Width="48*"/>
+            <ColumnDefinition Width="315*"/>
+            <ColumnDefinition Width="44*"/>
             <ColumnDefinition Width="53*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -20,12 +24,17 @@
             <RowDefinition Height="89*"/>
         </Grid.RowDefinitions>
 
-        <TextBox Name="txtSearch" Grid.Column="1" Text="Поиск" TextAlignment="Right" FontSize="32" GotFocus="txtSearch_GotFocus" LostFocus="txtSearch_LostFocus" Background="#FFEEDCCA" TextBlock.FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FF6A6A6A" BorderThickness="2" SelectionBrush="#FF5F4D3D"/>
-        <Button Name="btnSearch" Grid.Column="2" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="2" Click="btnSearch_Click">
-            <Image Source="D:\учёба\курсач\HistoricalMuseum222222-master\search.png" Width="40"/>
-        </Button>
+        <Viewbox Margin="0,0,0,0" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" VerticalAlignment="Stretch" HorizontalAlignment="Right">
+            <TextBox Name="txtSearch" Text="Поиск" TextAlignment="Right" MinWidth="400" MinHeight="45" FontSize="32" GotFocus="txtSearch_GotFocus" LostFocus="txtSearch_LostFocus" Background="#FFEEDCCA" TextBlock.FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FF6A6A6A" BorderThickness="2" SelectionBrush="#FF5F4D3D"/>
+        </Viewbox>
 
-        <DataGrid Background="#FFF8ECE3" FontSize="15" Grid.Row="1" Name="DataGridEntries" AutoGenerateColumns="False" IsReadOnly="True" Grid.ColumnSpan="3" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FF6A6A6A">
+        <Border Name="borderBtnSearch" Margin="0,0,0,0" Grid.Row="0" HorizontalAlignment="Stretch" CornerRadius="5" UseLayoutRounding="False" MouseDown="btnSearch_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" Grid.Column="6" MaxWidth="450" MaxHeight="300">
+            <Viewbox Margin="5,5,5,5">
+                <Image Source="/HistoricalMuseum;component/Resources/search.png"/>
+            </Viewbox>
+        </Border>
+
+        <DataGrid Background="#FFF8ECE3" FontSize="15" Grid.Row="1" Name="DataGridEntries" AutoGenerateColumns="False" IsReadOnly="True" Grid.ColumnSpan="7" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FF6A6A6A">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Дата и время" Binding="{Binding DateAndTime}" Width="*" FontSize="20"/>
                 <DataGridTextColumn Header="Экскурсионная программа" Binding="{Binding TourPrograms.TourTheme}" Width="*" FontSize="20"/>
@@ -40,9 +49,22 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Grid.Row="2" Name="btnAdd" Content="Добавить" Background="#FFEEDCCA" HorizontalAlignment="Left" Width="90" FontWeight="Bold" FontSize="15" Click="btnAdd_Click" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FFC8844E"/>
-        <Button Name="btnDel" Content="Удалить" Background="#FFEEDCCA" HorizontalAlignment="Left" Width="90" FontWeight="Bold" FontSize="15" Margin="360,0,0,0" Grid.Column="1" Click="btnDel_Click" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FFC8844E" Grid.Row="2" Grid.ColumnSpan="2"/>
-        <Button Name="btnBack" Content="Назад" Background="#FFEEDCCA" HorizontalAlignment="Left" Width="90" FontWeight="Bold" FontSize="15" Margin="405,0,0,0" Grid.ColumnSpan="2" Click="btnBack_Click" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FFC8844E" Grid.Row="2"/>
+        <Border Name="borderBtnAdd" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="5" UseLayoutRounding="False" MouseDown="btnAdd_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MaxWidth="250" MaxHeight="300">
+            <Viewbox Margin="12,10,12,10">
+                <Image Source="/HistoricalMuseum;component/Resources/add.png"/>
+            </Viewbox>
+        </Border>
 
+        <Border Name="borderBtnBack" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="5" UseLayoutRounding="False" MouseDown="btnBack_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" Grid.Column="2" Grid.ColumnSpan="2" MaxWidth="250" MaxHeight="300">
+            <Viewbox Margin="17,15,17,15">
+                <Image Source="/HistoricalMuseum;component/Resources/back.png"/>
+            </Viewbox>
+        </Border>
+
+        <Border Name="borderBtnDel" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Stretch" CornerRadius="5" UseLayoutRounding="False" MouseDown="btnDel_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" Grid.Column="5" Grid.ColumnSpan="2" MaxWidth="250" MaxHeight="300">
+            <Viewbox Margin="20,15,20,15">
+                <Image Source="/HistoricalMuseum;component/Resources/del.png"/>
+            </Viewbox>
+        </Border>
     </Grid>
 </Page>

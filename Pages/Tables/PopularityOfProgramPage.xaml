@@ -14,15 +14,22 @@
             <RowDefinition Height="73*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="405*"/>
+            <ColumnDefinition Width="44*"/>
+            <ColumnDefinition Width="43*"/>
+            <ColumnDefinition Width="405*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid Background="#FFF8ECE3" FontSize="15" Grid.Row="0" Name="DataGridPopulOfTours" AutoGenerateColumns="False" IsReadOnly="True" Grid.ColumnSpan="2" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FF6A6A6A">
+        <DataGrid Background="#FFF8ECE3" FontSize="15" Grid.Row="0" Name="DataGridPopulOfTours" AutoGenerateColumns="False" IsReadOnly="True" Grid.ColumnSpan="4" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FF6A6A6A">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Экскурсионная программа" Binding="{Binding TourTheme}" Width="*" FontSize="20"/>
                 <DataGridTextColumn Header="Количество посещений" Binding="{Binding PupolarityOfProgram}" Width="*" FontSize="20"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Name="btnBack" Content="Назад" Background="#FFEEDCCA" HorizontalAlignment="Left" Width="90" FontWeight="Bold" FontSize="15" Margin="405,0,0,0" Grid.ColumnSpan="2" Click="btnBack_Click" Grid.Row="1" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FFC8844E"/>
+
+        <Border Name="borderBtnBack" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="5" UseLayoutRounding="False" MouseDown="btnBack_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" Grid.Column="1" Grid.ColumnSpan="2" MaxWidth="250" MaxHeight="300">
+            <Viewbox Margin="17,15,17,15">
+                <Image Source="/HistoricalMuseum;component/Resources/back.png"/>
+            </Viewbox>
+        </Border>
     </Grid>
 </Page>
