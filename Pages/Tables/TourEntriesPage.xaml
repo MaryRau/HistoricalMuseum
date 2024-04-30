@@ -49,13 +49,13 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Border Name="borderBtnAdd" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="5" UseLayoutRounding="False" MouseDown="btnAdd_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MaxWidth="250" MaxHeight="300">
+        <Border Name="borderBtnAdd" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Stretch" CornerRadius="5" UseLayoutRounding="False" MouseDown="btnAdd_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MaxWidth="250" MaxHeight="300">
             <Viewbox Margin="12,10,12,10">
                 <Image Source="/HistoricalMuseum;component/Resources/add.png"/>
             </Viewbox>
         </Border>
 
-        <Border Name="borderBtnBack" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="5" UseLayoutRounding="False" MouseDown="btnBack_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" Grid.Column="2" Grid.ColumnSpan="2" MaxWidth="250" MaxHeight="300">
+        <Border Name="borderBtnBack" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Stretch" CornerRadius="5" UseLayoutRounding="False" MouseDown="btnBack_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" Grid.Column="2" Grid.ColumnSpan="2" MaxWidth="250" MaxHeight="300">
             <Viewbox Margin="17,15,17,15">
                 <Image Source="/HistoricalMuseum;component/Resources/back.png"/>
             </Viewbox>

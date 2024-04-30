@@ -10,17 +10,28 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="4*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="500*"/>
+            <ColumnDefinition Width="90*"/>
+            <ColumnDefinition Width="110*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="13*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="75*"/>
+            <RowDefinition Height="365*"/>
+            <RowDefinition Height="55*"/>
+            <RowDefinition Height="55*"/>
         </Grid.RowDefinitions>
 
-        <Button Name="btnTourEnt" HorizontalAlignment="Left" Height="221" VerticalAlignment="Center" Width="424" FontSize="55" Background="#FFEEDCCA" Foreground="#FFC8844E" FontWeight="Bold" BorderBrush="#FF98826C" Margin="238,0,0,0" Click="btnTourEnt_Click" FontFamily="Constantia">
-            <TextBlock Text="Записи на экскурсии" TextWrapping="Wrap" TextAlignment="Center" Height="134" Width="309"/>
-        </Button>
-        <Button Name="btnExit" Content="Выйти" HorizontalAlignment="Center" Height="53" VerticalAlignment="Center" Width="160" FontSize="45" Foreground="#FF6A6A6A" BorderBrush="#00707070" Background="#00DDDDDD" FontFamily="Constantia" Grid.Row="1" Grid.Column="1" Click="btnExit_Click"/>
+        <Border Name="brdrBtnTourEnt" Margin="70,95" Grid.Row="1" Grid.Column="1" CornerRadius="5" UseLayoutRounding="False" HorizontalAlignment="Center" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MouseDown="btnTourEnt_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MaxWidth="800" MaxHeight="350">
+            <Viewbox Margin="60,10">
+                <TextBlock Text="Записи на экскурсии" TextAlignment="Center" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" MaxWidth="110"/>
+            </Viewbox>
+        </Border>
+
+        <Border Name="brdrBtnExit" Margin="10,0" Grid.Row="3" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Left" MouseDown="btnExit_Click" MaxWidth="200" MaxHeight="150" Grid.ColumnSpan="2">
+            <Viewbox>
+                <TextBlock Name="btnExit" Text="Выйти" MouseEnter="btnExit_MouseEnter" MouseLeave="btnExit_MouseLeave" FontFamily="Constantia" Foreground="#FF6A6A6A" TextDecorations="Underline"/>
+            </Viewbox>
+        </Border>
     </Grid>
 </Page>

@@ -25,16 +25,21 @@ namespace HistoricalMuseum.Pages.AddToTables
         {
             InitializeComponent();
 
-            cmbPost.ItemsSource = MuseumEntities.GetContext().Posts.Select(x => x.Post).ToList();
+            cmbPost.ItemsSource = MuseumEntities.GetContext().Posts.ToList();
+            cmbPost.DisplayMemberPath = "Post";
 
-            if (selected != null) 
+            if (selected != null)
+            {
                 _currentStaff = selected;
+                cmbPost.SelectedItem = MuseumEntities.GetContext().Posts.FirstOrDefault(x => x.id == _currentStaff.Post);
+            }
+
+            else
+            {
+                cmbPost.Text = "Обязательный";
+            }
 
             DataContext = _currentStaff;
-            cmbPost.ItemsSource = MuseumEntities.GetContext().Posts.Select(x => x.Post).ToList();
-
-            if (cmbPost.SelectedItem == null)
-                cmbPost.Text = "Обязательный";
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
@@ -57,19 +62,22 @@ namespace HistoricalMuseum.Pages.AddToTables
                 return;
             }
 
-            int post = MuseumEntities.GetContext().Posts.Where(x => x.Post == cmbPost.Text).Select(x => x.id).First();
+            var selectedPost = (Posts)cmbPost.SelectedItem;
+            int postId = selectedPost.id;
+
             Staff staffObject = new Staff
             {
                 FIOStaff = txtStaff.Text,
-                Post = post
+                Post = postId
             };
 
-            var staff = MuseumEntities.GetContext().Staff.AsNoTracking().FirstOrDefault(f => f.FIOStaff == txtStaff.Text && f.Post == post);
+            var staff = MuseumEntities.GetContext().Staff.AsNoTracking().FirstOrDefault(f => f.FIOStaff == txtStaff.Text && f.Post == postId);
 
             if (_currentStaff.id == 0)
             {
                 if (staff == null)
                 {
+                    _currentStaff = staffObject;
                     MuseumEntities.GetContext().Staff.Add(_currentStaff);
                 }
 

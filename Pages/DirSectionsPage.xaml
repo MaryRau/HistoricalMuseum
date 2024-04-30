@@ -40,18 +40,18 @@
 
         <Border Name="brdrBtnRep1" Margin="20,25" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" CornerRadius="5" UseLayoutRounding="False" HorizontalAlignment="Right" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MouseDown="Report_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MaxWidth="600" MaxHeight="250">
             <Viewbox Margin="20,5" MinWidth="200">
-                <TextBlock Text="Отчёт по проведённым экскурсиям" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold"/>
+                <TextBlock Text="Отчёт по проведённым экскурсиям" TextAlignment="Center" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" MaxWidth="100"/>
             </Viewbox>
         </Border>
 
         <Border Name="brdrBtnRep2" Margin="20,25" Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="2" CornerRadius="5" UseLayoutRounding="False" HorizontalAlignment="Left" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MouseDown="Report_Click_1" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MaxWidth="600" MaxHeight="250">
-            <Viewbox Margin="20,5" MinWidth="200">
-                <TextBlock Text="Отчёт по посещению экскурсий" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold"/>
+            <Viewbox Margin="25,5" MinWidth="200">
+                <TextBlock Margin="5,0" Text="Отчёт по посещению экскурсий" TextAlignment="Center" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" MaxWidth="120"/>
             </Viewbox>
         </Border>
 
         <Border Name="brdrBtnExit" Margin="10,0" Grid.Row="4" Grid.Column="7" VerticalAlignment="Center" HorizontalAlignment="Center" MouseDown="btnExit_Click" MaxWidth="200" MaxHeight="150">
-            <Viewbox Margin="5,5,5,5">
+            <Viewbox>
                 <TextBlock Name="btnExit" Text="Выйти" FontFamily="Constantia" Foreground="#FF6A6A6A" TextDecorations="Underline" MouseEnter="btnExit_MouseEnter" MouseLeave="btnExit_MouseLeave"/>
             </Viewbox>
         </Border>

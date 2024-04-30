@@ -49,34 +49,19 @@ namespace HistoricalMuseum.Pages.AddToTables
                 return;
             }
 
-            Countries countryObject = new Countries
-            {
-                Country = txtCountry.Text
-            };
-
             var country = MuseumEntities.GetContext().Countries.AsNoTracking().FirstOrDefault(f => f.Country.ToLower() == txtCountry.Text.ToLower());
+
+            if (country != null)
+            {
+                MessageBox.Show("Такой автор уже существует!");
+                return;
+            }
+
+            _currentCountry.Country = txtCountry.Text;
 
             if (_currentCountry.id == 0)
             {
-                if (country == null)
-                {
-                    MuseumEntities.GetContext().Countries.Add(_currentCountry);
-                }
-
-                else
-                {
-                    MessageBox.Show("Такая страна уже существует!");
-                    return;
-                }
-            }
-
-            else
-            {
-                if (country != null)
-                {
-                    MessageBox.Show("Такая страна уже существует!");
-                    return;
-                }
+                MuseumEntities.GetContext().Countries.Add(_currentCountry);
             }
 
             try
@@ -88,6 +73,18 @@ namespace HistoricalMuseum.Pages.AddToTables
             {
                 MessageBox.Show(ex.Message.ToString());
             }
+        }
+
+        private void btn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            (sender as Border).Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#FFCFBDAB");
+            (sender as Border).BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF7A6653");
+        }
+
+        private void btn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            (sender as Border).Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#FFEEDCCA");
+            (sender as Border).BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF98826C");
         }
     }
 }

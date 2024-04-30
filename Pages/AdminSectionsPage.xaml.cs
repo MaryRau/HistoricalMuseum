@@ -76,14 +76,12 @@ namespace HistoricalMuseum
 
         private void btnExit_MouseEnter(object sender, MouseEventArgs e)
         {
-            btnExit.Foreground = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF313131");
-            btnExit.TextDecorations = TextDecorations.Baseline;
+            (sender as TextBlock).TextDecorations = TextDecorations.Baseline;
         }
 
         private void btnExit_MouseLeave(object sender, MouseEventArgs e)
         {
-            btnExit.Foreground = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF6A6A6A");
-            btnExit.TextDecorations = TextDecorations.Underline;
+            (sender as TextBlock).TextDecorations = TextDecorations.Underline;
         }
     }
 }

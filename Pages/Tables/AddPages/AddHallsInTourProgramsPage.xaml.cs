@@ -25,20 +25,25 @@ namespace HistoricalMuseum.Pages.AddToTables
         {
             InitializeComponent();
 
-            cmbHall.ItemsSource = MuseumEntities.GetContext().Halls.Select(x => x.Theme).ToList();
-            cmbTourProg.ItemsSource = MuseumEntities.GetContext().TourPrograms.Select(x => x.TourTheme).ToList();
+            cmbHall.ItemsSource = MuseumEntities.GetContext().Halls.ToList();
+            cmbHall.DisplayMemberPath = "Theme";
+            cmbTourProg.ItemsSource = MuseumEntities.GetContext().TourPrograms.ToList();
+            cmbTourProg.DisplayMemberPath = "TourTheme";
 
             if (selected != null)
+            {
                 _current = selected;
+                cmbHall.SelectedItem = MuseumEntities.GetContext().Halls.FirstOrDefault(x => x.id == _current.Hall);
+                cmbTourProg.SelectedItem = MuseumEntities.GetContext().TourPrograms.FirstOrDefault(x => x.id == _current.TourProgram);
+            }
+
+            else
+            {
+                cmbHall.Text = "Обязательный";
+                cmbTourProg.Text = "Обязательный";
+            }
 
             DataContext = _current;
-            cmbTourProg.ItemsSource = MuseumEntities.GetContext().TourPrograms.Select(x => x.TourTheme).ToList();
-            cmbHall.ItemsSource = MuseumEntities.GetContext().Halls.Select(x => x.Theme).ToList();
-
-            if (cmbHall.SelectedItem == null)
-                cmbHall.Text = "Обязательный";
-            if (cmbTourProg.SelectedItem == null)
-                cmbTourProg.Text = "Обязательный";
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
@@ -61,21 +66,25 @@ namespace HistoricalMuseum.Pages.AddToTables
                 return;
             }
 
-            int hall = MuseumEntities.GetContext().Halls.Where(x => x.Theme == cmbHall.Text).Select(x => x.id).First();
-            int tour = MuseumEntities.GetContext().TourPrograms.Where(x => x.TourTheme == cmbTourProg.Text).Select(x => x.id).First();
+            var selectedHall = (Halls)cmbHall.SelectedItem;
+            var selectedTour = (TourPrograms)cmbTourProg.SelectedItem;
 
-            HallsInTourPrograms exInStoreObject = new HallsInTourPrograms
+            int hallId = selectedHall.id;
+            int tourId = selectedTour.id;
+
+            HallsInTourPrograms hallInTourObject = new HallsInTourPrograms
             {
-                Hall = hall,
-                TourProgram = tour
+                Hall = hallId,
+                TourProgram = tourId
             };
 
-            var hallsInTours = MuseumEntities.GetContext().HallsInTourPrograms.AsNoTracking().FirstOrDefault(f => f.Hall == hall && f.TourProgram == tour);
+            var hallsInTours = MuseumEntities.GetContext().HallsInTourPrograms.AsNoTracking().FirstOrDefault(f => f.Hall == hallId && f.TourProgram == tourId);
 
             if (_current.id == 0)
             {
                 if (hallsInTours == null)
                 {
+                    _current = hallInTourObject;
                     MuseumEntities.GetContext().HallsInTourPrograms.Add(_current);
                 }
 

@@ -43,7 +43,7 @@ namespace HistoricalMuseum.Pages.AddToTables
         {
             StringBuilder errors = new StringBuilder();
 
-            if (string.IsNullOrWhiteSpace(FIO.Text))
+            if (string.IsNullOrWhiteSpace(txtFIO.Text))
                 errors.AppendLine("Укажите автора!");
             
             if (errors.Length > 0)
@@ -52,34 +52,19 @@ namespace HistoricalMuseum.Pages.AddToTables
                 return;
             }
 
-            Authors authorObject = new Authors
-            {
-                FIOAuthor = FIO.Text
-            };
+            var author = MuseumEntities.GetContext().Authors.AsNoTracking().FirstOrDefault(f => f.FIOAuthor.ToLower() == txtFIO.Text.ToLower());
 
-            var author = MuseumEntities.GetContext().Authors.AsNoTracking().FirstOrDefault(f => f.FIOAuthor.ToLower() == FIO.Text.ToLower());
+            if (author != null)
+            {
+                MessageBox.Show("Такой автор уже существует!");
+                return;
+            }
+
+            _currentAuthor.FIOAuthor = txtFIO.Text;
 
             if (_currentAuthor.id == 0)
             {
-                if (author == null)
-                {
-                    MuseumEntities.GetContext().Authors.Add(_currentAuthor);
-                }
-
-                else
-                {
-                    MessageBox.Show("Такой автор уже существует!");
-                    return;
-                }
-            }
-
-            else
-            {
-                if (author != null)
-                { 
-                    MessageBox.Show("Такой автор уже существует!");
-                    return;
-                }
+                MuseumEntities.GetContext().Authors.Add(_currentAuthor);
             }
 
             try
@@ -91,6 +76,18 @@ namespace HistoricalMuseum.Pages.AddToTables
             {
                 MessageBox.Show(ex.Message.ToString());
             }
+        }
+
+        private void btn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            (sender as Border).Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#FFCFBDAB");
+            (sender as Border).BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF7A6653");
+        }
+
+        private void btn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            (sender as Border).Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#FFEEDCCA");
+            (sender as Border).BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF98826C");
         }
     }
 }

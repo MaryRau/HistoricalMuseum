@@ -26,24 +26,27 @@ namespace HistoricalMuseum.Pages.AddToTables
         {
             InitializeComponent();
 
-            cmbGuide.ItemsSource = MuseumEntities.GetContext().Staff.Select(x => x.FIOStaff).ToList();
-            cmbTourProgram.ItemsSource = MuseumEntities.GetContext().TourPrograms.Select(x => x.TourTheme).ToList();
+            cmbGuide.ItemsSource = MuseumEntities.GetContext().Staff.ToList();
+            cmbGuide.DisplayMemberPath = "FIOStaff";
+            cmbTourProgram.ItemsSource = MuseumEntities.GetContext().TourPrograms.ToList();
+            cmbTourProgram.DisplayMemberPath = "TourTheme";
 
             if (selected != null)
             {
                 _currentEntry = selected;
+                cmbGuide.SelectedItem = MuseumEntities.GetContext().TourPrograms.FirstOrDefault(x => x.id == _currentEntry.Guide);
+                cmbTourProgram.SelectedItem = MuseumEntities.GetContext().TourPrograms.FirstOrDefault(x => x.id == _currentEntry.TourProgram);
                 txtDate.SelectedDate = Convert.ToDateTime(_currentEntry.DateAndTime.ToString().Split(' ')[0]);
                 txtTime.Text = _currentEntry.DateAndTime.ToString().Split(' ')[1];
             }
 
-            DataContext = _currentEntry;
-            cmbTourProgram.ItemsSource = MuseumEntities.GetContext().TourPrograms.Select(x => x.TourTheme).ToList();
-            cmbGuide.ItemsSource = MuseumEntities.GetContext().Staff.Where(y => y.Posts.Post == "Экскурсовод").Select(x => x.FIOStaff).ToList();
-
-            if (cmbGuide.SelectedItem == null)
+            else
+            {
                 cmbGuide.Text = "Обязательный";
-            if (cmbTourProgram.SelectedItem == null)
                 cmbTourProgram.Text = "Обязательный";
+            }
+
+            DataContext = _currentEntry;
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
@@ -79,21 +82,26 @@ namespace HistoricalMuseum.Pages.AddToTables
                 return;
             }
 
-            int guide = MuseumEntities.GetContext().Staff.Where(x => x.FIOStaff == cmbGuide.Text).Select(x => x.id).First();
-            int tour = MuseumEntities.GetContext().TourPrograms.Where(x => x.TourTheme == cmbTourProgram.Text).Select(x => x.id).First();
+            var selectedGuide = (Staff)cmbGuide.SelectedItem;
+            var selectedTour = (TourPrograms)cmbTourProgram.SelectedItem;
+
+            int guideId = selectedGuide.id;
+            int tourId = selectedTour.id;
+
             TourEntries tourEntrObject = new TourEntries
             {
                 DateAndTime = dateAndTime,
-                Guide = guide,
-                TourProgram = tour
+                Guide = guideId,
+                TourProgram = tourId
             };
 
-            var entries = MuseumEntities.GetContext().TourEntries.AsNoTracking().FirstOrDefault(f => f.Guide == guide && f.TourProgram == tour && f.DateAndTime == dateAndTime);
+            var entries = MuseumEntities.GetContext().TourEntries.AsNoTracking().FirstOrDefault(f => f.Guide == guideId && f.TourProgram == tourId && f.DateAndTime == dateAndTime);
 
             if (_currentEntry.id == 0)
             {
                 if (entries == null)
                 {
+                    _currentEntry = tourEntrObject;
                     MuseumEntities.GetContext().TourEntries.Add(_currentEntry);
                 }
 

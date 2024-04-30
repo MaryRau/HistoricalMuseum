@@ -40,26 +40,26 @@
         </Border>
 
         <Border Name="brdrBtnHalls" Margin="15,20" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" CornerRadius="5" UseLayoutRounding="False" HorizontalAlignment="Right" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MouseDown="btnHalls_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MaxWidth="600" MaxHeight="250">
-            <Viewbox Margin="55,20,55,20">
+            <Viewbox Margin="35,20">
                 <TextBlock Text="Залы" Margin="20,0,20,0" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold"/>
             </Viewbox>
         </Border>
 
         <Border Name="brdrBtnHallsInTours" Margin="15,20" Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="2" CornerRadius="5" UseLayoutRounding="False" HorizontalAlignment="Left" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MouseDown="btnHallsInTours_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MaxWidth="600" MaxHeight="250">
             <Viewbox Margin="10,10,10,10">
-                <TextBlock Text="Залы в экскурсионных программах" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold"/>
+                <TextBlock Text="Залы в экскурсионных программах" TextAlignment="Center" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" MaxWidth="200"/>
             </Viewbox>
         </Border>
 
-        <Border Name="brdrBtnTourPrograms" Margin="30,30" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="4" CornerRadius="5" UseLayoutRounding="False" HorizontalAlignment="Center" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MouseDown="btnTourPrograms_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MaxWidth="600" MaxHeight="250">
-            <Viewbox Margin="10,10,10,10">
-                <TextBlock Text="Экскурсионные программы" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold"/>
+        <Border Name="brdrBtnTourPrograms" Margin="30,25" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="4" CornerRadius="5" UseLayoutRounding="False" HorizontalAlignment="Center" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MouseDown="btnTourPrograms_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MaxWidth="600" MaxHeight="250">
+            <Viewbox Margin="50,10">
+                <TextBlock Text="Экскурсионные программы" TextAlignment="Center" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" MaxWidth="100"/>
             </Viewbox>
         </Border>
 
-        <Border Name="brdrBtnExit" Margin="10,0" Grid.Row="5" Grid.Column="7" VerticalAlignment="Center" HorizontalAlignment="Center" MouseDown="btnExit_Click" MouseEnter="btnExit_MouseEnter" MouseLeave="btnExit_MouseLeave" MaxWidth="200" MaxHeight="150">
-            <Viewbox Margin="5,5,5,5">
-                <TextBlock Name="btnExit" Text="Выйти" FontFamily="Constantia" Foreground="#FF6A6A6A" TextDecorations="Underline"/>
+        <Border Name="brdrBtnExit" Margin="10,0" Grid.Row="5" Grid.Column="7" VerticalAlignment="Center" HorizontalAlignment="Center" MouseDown="btnExit_Click" MaxWidth="200" MaxHeight="150">
+            <Viewbox>
+                <TextBlock Name="btnExit" Text="Выйти" MouseEnter="btnExit_MouseEnter" MouseLeave="btnExit_MouseLeave" FontFamily="Constantia" Foreground="#FF6A6A6A" TextDecorations="Underline"/>
             </Viewbox>
         </Border>
     </Grid>

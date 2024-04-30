@@ -41,13 +41,6 @@ namespace HistoricalMuseum.Pages.AddToTables
             cmbHall.ItemsSource = MuseumEntities.GetContext().Halls.ToList();
             cmbHall.DisplayMemberPath = "Theme";
 
-            if (length == 0)
-            {
-                cmbExh.Text = "Невозможно разместить ни один экспонат!";
-                // настроить кнопку сохранения невидимой
-            }
-
-
             if (selected != null)
             {
                 _current = selected;
@@ -57,9 +50,12 @@ namespace HistoricalMuseum.Pages.AddToTables
 
             else
             {
-                
                 if (length == 0)
-                    cmbExh.Text = "Невозможно разместить ни один экспонат!";
+                {
+                    cmbExh.Text = "Невозможно разместить ни один экспонат!"; // настроить кнопку сохранения невидимой
+                    
+                }
+
                 else cmbExh.Text = "Обязательный";
                 cmbHall.Text = "Обязательный";
             }
