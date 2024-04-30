@@ -72,36 +72,20 @@ namespace HistoricalMuseum.Pages.AddToTables
             int hallId = selectedHall.id;
             int tourId = selectedTour.id;
 
-            HallsInTourPrograms hallInTourObject = new HallsInTourPrograms
-            {
-                Hall = hallId,
-                TourProgram = tourId
-            };
-
             var hallsInTours = MuseumEntities.GetContext().HallsInTourPrograms.AsNoTracking().FirstOrDefault(f => f.Hall == hallId && f.TourProgram == tourId);
+
+            if (hallsInTours != null)
+            {
+                MessageBox.Show("Такая запись уже существует!");
+                return;
+            }
+
+            _current.TourProgram = tourId;
+            _current.Hall = hallId;
 
             if (_current.id == 0)
             {
-                if (hallsInTours == null)
-                {
-                    _current = hallInTourObject;
-                    MuseumEntities.GetContext().HallsInTourPrograms.Add(_current);
-                }
-
-                else
-                {
-                    MessageBox.Show("Такая запись уже существует!");
-                    return;
-                }
-            }
-
-            else
-            {
-                if (hallsInTours != null)
-                {
-                    MessageBox.Show("Такая запись уже существует!");
-                    return;
-                }
+                MuseumEntities.GetContext().HallsInTourPrograms.Add(_current);
             }
 
             try
@@ -113,6 +97,18 @@ namespace HistoricalMuseum.Pages.AddToTables
             {
                 MessageBox.Show(ex.Message.ToString());
             }
+        }
+
+        private void btn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            (sender as Border).Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#FFCFBDAB");
+            (sender as Border).BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF7A6653");
+        }
+
+        private void btn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            (sender as Border).Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#FFEEDCCA");
+            (sender as Border).BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF98826C");
         }
     }
 }

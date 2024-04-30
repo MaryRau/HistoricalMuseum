@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,7 +35,7 @@ namespace HistoricalMuseum.Pages.AddToTables
             if (selected != null)
             {
                 _currentEntry = selected;
-                cmbGuide.SelectedItem = MuseumEntities.GetContext().TourPrograms.FirstOrDefault(x => x.id == _currentEntry.Guide);
+                cmbGuide.SelectedItem = MuseumEntities.GetContext().Staff.FirstOrDefault(x => x.id == _currentEntry.Guide);
                 cmbTourProgram.SelectedItem = MuseumEntities.GetContext().TourPrograms.FirstOrDefault(x => x.id == _currentEntry.TourProgram);
                 txtDate.SelectedDate = Convert.ToDateTime(_currentEntry.DateAndTime.ToString().Split(' ')[0]);
                 txtTime.Text = _currentEntry.DateAndTime.ToString().Split(' ')[1];
@@ -60,17 +61,21 @@ namespace HistoricalMuseum.Pages.AddToTables
 
             if (string.IsNullOrWhiteSpace(txtDate.Text))
                 errors.AppendLine("Укажите дату!");
-            if (string.IsNullOrWhiteSpace(txtTime.Text))
+            if (!string.IsNullOrWhiteSpace(txtTime.Text))
+            {
                 try
                 {
-                    DateTime date = Convert.ToDateTime(txtDate.Text);
+                    DateTime date = (DateTime)txtDate.SelectedDate;
                     TimeSpan time = TimeSpan.Parse(txtTime.Text);
-                    dateAndTime = date.Add(time);
+                    dateAndTime = date.Date + time;
                 }
                 catch (Exception)
                 {
-                    errors.AppendLine("Введите время в формате ЧЧ:ММ");
+                    errors.AppendLine("Ошибка ввода времени");
                 }
+            }
+            else errors.AppendLine("Введите время в формате ЧЧ:ММ");
+
             if (string.IsNullOrWhiteSpace(cmbTourProgram.Text) || cmbTourProgram.Text == "Обязательный")
                 errors.AppendLine("Укажите экскурсию!");
             if (string.IsNullOrWhiteSpace(cmbGuide.Text) || cmbGuide.Text == "Обязательный")
@@ -88,37 +93,21 @@ namespace HistoricalMuseum.Pages.AddToTables
             int guideId = selectedGuide.id;
             int tourId = selectedTour.id;
 
-            TourEntries tourEntrObject = new TourEntries
-            {
-                DateAndTime = dateAndTime,
-                Guide = guideId,
-                TourProgram = tourId
-            };
-
             var entries = MuseumEntities.GetContext().TourEntries.AsNoTracking().FirstOrDefault(f => f.Guide == guideId && f.TourProgram == tourId && f.DateAndTime == dateAndTime);
+
+            if (entries != null)
+            {
+                MessageBox.Show("Такая запись уже существует!");
+                return;
+            }
+
+            _currentEntry.DateAndTime = dateAndTime;
+            _currentEntry.Guide = guideId;
+            _currentEntry.TourProgram = tourId;
 
             if (_currentEntry.id == 0)
             {
-                if (entries == null)
-                {
-                    _currentEntry = tourEntrObject;
-                    MuseumEntities.GetContext().TourEntries.Add(_currentEntry);
-                }
-
-                else
-                {
-                    MessageBox.Show("Такая запись уже существует!");
-                    return;
-                }
-            }
-
-            else
-            {
-                if (entries != null)
-                {
-                    MessageBox.Show("Такая запись уже существует!");
-                    return;
-                }
+                MuseumEntities.GetContext().TourEntries.Add(_currentEntry);
             }
 
             try
@@ -130,6 +119,18 @@ namespace HistoricalMuseum.Pages.AddToTables
             {
                 MessageBox.Show(ex.Message.ToString());
             }
+        }
+
+        private void btn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            (sender as Border).Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#FFCFBDAB");
+            (sender as Border).BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF7A6653");
+        }
+
+        private void btn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            (sender as Border).Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#FFEEDCCA");
+            (sender as Border).BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF98826C");
         }
     }
 }

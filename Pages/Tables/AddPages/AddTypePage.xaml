@@ -21,8 +21,8 @@
             <ColumnDefinition Width="150*"/>
         </Grid.ColumnDefinitions>
 
-        <Viewbox Margin="10,0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" MaxWidth="450" MaxHeight="200" Grid.ColumnSpan="2">
-            <TextBlock Text="Тип экспоната:" FontSize="50" TextAlignment="Center" FontFamily="Constantia" Foreground="#FF6A6A6A" MinHeight="60" MinWidth="155"/>
+        <Viewbox Margin="30,0,5,5" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" MaxWidth="800" MaxHeight="500" Grid.ColumnSpan="2">
+            <TextBlock Text="Тип экспоната:" FontSize="50" TextAlignment="Left" TextWrapping="Wrap" FontFamily="Constantia" Foreground="#FF6A6A6A" MinHeight="60" MinWidth="150" MaxWidth="300"/>
         </Viewbox>
 
         <Viewbox Margin="25,0,40,0" Grid.Column="2" Grid.ColumnSpan="3" MaxHeight="110" VerticalAlignment="Center" HorizontalAlignment="Left">

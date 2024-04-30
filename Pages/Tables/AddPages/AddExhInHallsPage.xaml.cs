@@ -89,36 +89,20 @@ namespace HistoricalMuseum.Pages.AddToTables
             int exhId = selectedExh.id;
             int hallId = selectedHall.id;
 
-            ExhibitsInHalls exInHallsObject = new ExhibitsInHalls
-            {
-                Exhibit = exhId,
-                Hall = hallId
-            };
-
             var exhInHalls = MuseumEntities.GetContext().ExhibitsInHalls.AsNoTracking().FirstOrDefault(f => f.Exhibit == exhId && f.Hall == hallId);
 
+            if (exhInHalls != null)
+            {
+                MessageBox.Show("Такая запись уже существует!");
+                return;
+            }
+
+            _current.Exhibit = exhId;
+            _current.Hall = hallId;
 
             if (_current.id == 0)
             {
-                if (exhInHalls == null)
-                {
-                    _current = exInHallsObject;
-                    MuseumEntities.GetContext().ExhibitsInHalls.Add(_current);}
-
-                else
-                {
-                    MessageBox.Show("Такая запись уже существует!");
-                    return;
-                }
-            }
-
-            else
-            {
-                if (exhInHalls != null)
-                {
-                    MessageBox.Show("Такая запись уже существует!");
-                    return;
-                }
+                MuseumEntities.GetContext().ExhibitsInHalls.Add(_current);
             }
 
             try
@@ -129,7 +113,19 @@ namespace HistoricalMuseum.Pages.AddToTables
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());
-            }  
+            }
+        }
+
+        private void btn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            (sender as Border).Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#FFCFBDAB");
+            (sender as Border).BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF7A6653");
+        }
+
+        private void btn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            (sender as Border).Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#FFEEDCCA");
+            (sender as Border).BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF98826C");
         }
     }
 }

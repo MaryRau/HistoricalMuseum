@@ -21,8 +21,8 @@
             <ColumnDefinition Width="176*"/>
         </Grid.ColumnDefinitions>
 
-        <Viewbox Margin="15,0,0,5" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" MaxWidth="700" MaxHeight="500" Grid.ColumnSpan="3">
-            <TextBlock Text="Историческая эпоха:" FontSize="50" TextAlignment="Center" FontFamily="Constantia" Foreground="#FF6A6A6A" MinHeight="60" MinWidth="155"/>
+        <Viewbox Margin="50,0,5,5" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" MaxWidth="800" MaxHeight="500" Grid.ColumnSpan="3">
+            <TextBlock Text="Историческая эпоха:" FontSize="60" TextAlignment="Right" TextWrapping="Wrap" FontFamily="Constantia" Foreground="#FF6A6A6A" MinHeight="60" MinWidth="155" MaxWidth="500"/>
         </Viewbox>
 
         <Viewbox Margin="25,0" Grid.Column="3" Grid.ColumnSpan="2" MaxHeight="110" VerticalAlignment="Center" HorizontalAlignment="Left">

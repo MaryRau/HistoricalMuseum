@@ -21,7 +21,7 @@
             <ColumnDefinition Width="150*"/>
         </Grid.ColumnDefinitions>
 
-        <Viewbox Margin="20,0,5,10" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" MaxWidth="450" MaxHeight="200" Grid.ColumnSpan="2">
+        <Viewbox Margin="40,0,5,10" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" MaxWidth="450" MaxHeight="200" Grid.ColumnSpan="2">
             <TextBlock Text="Страна:" FontSize="50" TextAlignment="Center" FontFamily="Constantia" Foreground="#FF6A6A6A" MinHeight="60" MinWidth="155"/>
         </Viewbox>
 

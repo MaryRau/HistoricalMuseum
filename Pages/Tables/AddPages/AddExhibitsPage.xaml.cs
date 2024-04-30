@@ -91,41 +91,25 @@ namespace HistoricalMuseum.Pages.AddToTables
             int epochId = selectedEpoch.id;
             int countryId = selectedCountry.id;
 
-            Exhibits exhibitObject = new Exhibits
-            {
-                Exhibit = txtExh.Text,
-                ExhibitType = typeId,
-                Author = authorId,
-                HistoricalEpoch = epochId,
-                CreationCountry = countryId,
-                Description = txtDiscription.Text ?? null
-            };
-
             var exhibit = MuseumEntities.GetContext().Exhibits.AsNoTracking().FirstOrDefault(f => f.Exhibit.ToLower() == txtExh.Text.ToLower() && f.ExhibitType == typeId
             && f.Author == authorId && f.HistoricalEpoch == epochId && f.CreationCountry == countryId && f.Description == txtDiscription.Text);
 
-            if (_currentExh.id == 0)
+            if (exhibit != null)
             {
-                if (exhibit == null)
-                {
-                    _currentExh = exhibitObject;
-                    MuseumEntities.GetContext().Exhibits.Add(_currentExh);
-                }
-
-                else
-                {
-                    MessageBox.Show("Такой экспонат уже существует!");
-                    return;
-                }
+                MessageBox.Show("Такой экспонат уже существует!");
+                return;
             }
 
-            else
+            _currentExh.Exhibit = txtExh.Text;
+            _currentExh.ExhibitType = typeId;
+            _currentExh.Author = authorId;
+            _currentExh.HistoricalEpoch = epochId;
+            _currentExh.CreationCountry = countryId;
+            _currentExh.Description = txtDiscription.Text;
+
+            if (_currentExh.id == 0)
             {
-                if (exhibit != null)
-                {
-                    MessageBox.Show("Такой экспонат уже существует!");
-                    return;
-                }
+                MuseumEntities.GetContext().Exhibits.Add(_currentExh);
             }
 
             try
@@ -137,6 +121,18 @@ namespace HistoricalMuseum.Pages.AddToTables
             {
                 MessageBox.Show(ex.Message.ToString());
             }
+        }
+
+        private void btn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            (sender as Border).Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#FFCFBDAB");
+            (sender as Border).BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF7A6653");
+        }
+
+        private void btn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            (sender as Border).Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#FFEEDCCA");
+            (sender as Border).BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF98826C");
         }
     }
 }

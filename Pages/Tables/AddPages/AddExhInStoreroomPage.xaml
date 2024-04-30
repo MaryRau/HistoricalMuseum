@@ -10,24 +10,35 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="440*"/>
+            <RowDefinition Height="110*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="4*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="150*"/>
+            <ColumnDefinition Width="75*"/>
+            <ColumnDefinition Width="450*"/>
+            <ColumnDefinition Width="75*"/>
+            <ColumnDefinition Width="150*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock VerticalAlignment="Top" Text="Экспонат:" Grid.Column="0" Margin="28,129,10,0" FontSize="40" Height="53" FontFamily="Constantia" Foreground="#FF6A6A6A"/>
-        <ComboBox Name="cmbExh" VerticalAlignment="Center" Margin="46,0,32,0" VerticalContentAlignment="Center" SelectedItem="{Binding Exhibits.Exhibit}" IsEditable="True" Grid.Column="1" FontSize="25" Grid.ColumnSpan="2" Height="50" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FF6A6A6A">
-            <ComboBox.Background>
-                <LinearGradientBrush EndPoint="0,1">
-                    <GradientStop Color="#FFF0F0F0"/>
-                    <GradientStop Color="#FFEEDCCA" Offset="1"/>
-                </LinearGradientBrush>
-            </ComboBox.Background>
-        </ComboBox>
-        <Button Name="ButtonSave" Content="Сохранить" Grid.Row="1" Margin="0,39,0,38" Background="#FFEEDCCA" HorizontalAlignment="Center" Width="160" Grid.Column="2" FontWeight="Bold" FontSize="28" Click="ButtonSave_Click" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FFC8844E"/>
-        <Button Name="ButtonCancel" Content="Отмена" Grid.Row="1" Click="ButtonCancel_Click" Margin="0,39,0,38" Background="#FFEEDCCA" HorizontalAlignment="Center" Width="160" FontWeight="Bold" FontSize="28" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FFC8844E"/>
+
+        <Viewbox Margin="10,0,5,5" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" MaxWidth="450" MaxHeight="200" Grid.ColumnSpan="2">
+            <TextBlock Text="Экспонат:" FontSize="50" TextAlignment="Center" FontFamily="Constantia" Foreground="#FF6A6A6A" MinHeight="60" MinWidth="155"/>
+        </Viewbox>
+
+        <Viewbox Margin="25,0,40,0" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" MaxHeight="115" MinHeight="100" VerticalAlignment="Center" HorizontalAlignment="Left">
+            <ComboBox Name="cmbExh" FontSize="15" IsEditable="True" VerticalContentAlignment="Center" Background="#FFEEDCCA" TextBlock.FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FF6A6A6A" BorderThickness="1" MinWidth="400" MinHeight="35"/>
+        </Viewbox>
+
+        <Border Name="borderBtnSave" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="2" CornerRadius="5" UseLayoutRounding="False" MouseDown="ButtonSave_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" Grid.Column="4" MaxWidth="350" MaxHeight="200">
+            <Viewbox Margin="10,15">
+                <TextBlock Name="btnSave" Text="Сохранить" FontSize="50" FontWeight="Bold" TextAlignment="Center" TextBlock.FontFamily="Constantia" Foreground="#FFC8844E" VerticalAlignment="Center"/>
+            </Viewbox>
+        </Border>
+
+        <Border Name="borderBtnCancel" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="2" CornerRadius="5" UseLayoutRounding="False" MouseDown="ButtonCancel_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MaxWidth="350" MaxHeight="200">
+            <Viewbox Margin="15,15">
+                <TextBlock Name="btnCancel" Text="Отмена" FontSize="50" FontWeight="Bold" TextAlignment="Center" TextBlock.FontFamily="Constantia" Foreground="#FFC8844E" VerticalAlignment="Center"/>
+            </Viewbox>
+        </Border>
     </Grid>
 </Page>
