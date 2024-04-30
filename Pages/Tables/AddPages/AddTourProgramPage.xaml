@@ -10,17 +10,35 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="440*"/>
+            <RowDefinition Height="110*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="4*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="161*"/>
+            <ColumnDefinition Width="80*"/>
+            <ColumnDefinition Width="74*"/>
+            <ColumnDefinition Width="409*"/>
+            <ColumnDefinition Width="176*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock VerticalAlignment="Center" Text="Экскурсия:" Grid.Column="0" Margin="18,130,10,130" FontSize="38" Height="55" FontFamily="Constantia" Foreground="#FF6A6A6A"/>
-        <TextBox Text="{Binding TourTheme}" MaxLength="100" Name="txtTour" VerticalAlignment="Center" Margin="37,0,41,0" Grid.Column="1" FontSize="25" Grid.ColumnSpan="2" Height="36" FontFamily="Constantia" BorderBrush="#FF98826C" Background="#FFEEDCCA" Foreground="#FF6A6A6A"/>
-        <Button Name="ButtonSave" Content="Сохранить" Grid.Row="1" Margin="0,39,0,38" Background="#FFEEDCCA" HorizontalAlignment="Center" Width="160" Grid.Column="2" FontWeight="Bold" FontSize="28" Click="ButtonSave_Click" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FFC8844E"/>
-        <Button Name="ButtonCancel" Content="Отмена" Grid.Row="1" Click="ButtonCancel_Click" Margin="0,39,0,38" Background="#FFEEDCCA" HorizontalAlignment="Center" Width="160" FontWeight="Bold" FontSize="28" FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FFC8844E"/>
+
+        <Viewbox Margin="5,0,0,5" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" MaxWidth="800" MaxHeight="500" Grid.ColumnSpan="3">
+            <TextBlock Text="Экскурсионная программа:" FontSize="50" TextAlignment="Center" FontFamily="Constantia" Foreground="#FF6A6A6A" MinHeight="60" MinWidth="155"/>
+        </Viewbox>
+
+        <Viewbox Margin="25,0" Grid.Column="3" Grid.ColumnSpan="2" MaxHeight="110" VerticalAlignment="Center" HorizontalAlignment="Left">
+            <TextBox Name="txtTour" Text="{Binding TourTheme}" TextAlignment="Left" VerticalContentAlignment="Center" MaxLength="100" Background="#FFEEDCCA" TextBlock.FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FF6A6A6A" BorderThickness="1" SelectionBrush="#FF5F4D3D" MinWidth="400" MinHeight="35"/>
+        </Viewbox>
+
+        <Border Name="borderBtnSave" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="1" CornerRadius="5" UseLayoutRounding="False" MouseDown="ButtonSave_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" Grid.Column="4" MaxWidth="350" MaxHeight="200">
+            <Viewbox Margin="10,15">
+                <TextBlock Name="btnSave" Text="Сохранить" FontSize="50" FontWeight="Bold" TextAlignment="Center" TextBlock.FontFamily="Constantia" Foreground="#FFC8844E" VerticalAlignment="Center"/>
+            </Viewbox>
+        </Border>
+
+        <Border Name="borderBtnCancel" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="1" CornerRadius="5" UseLayoutRounding="False" MouseDown="ButtonCancel_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MaxWidth="350" MaxHeight="200">
+            <Viewbox Margin="15,15">
+                <TextBlock Name="btnCancel" Text="Отмена" FontSize="50" FontWeight="Bold" TextAlignment="Center" TextBlock.FontFamily="Constantia" Foreground="#FFC8844E" VerticalAlignment="Center"/>
+            </Viewbox>
+        </Border>
     </Grid>
 </Page>

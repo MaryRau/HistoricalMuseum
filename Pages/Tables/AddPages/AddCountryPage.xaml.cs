@@ -53,7 +53,7 @@ namespace HistoricalMuseum.Pages.AddToTables
 
             if (country != null)
             {
-                MessageBox.Show("Такой автор уже существует!");
+                MessageBox.Show("Такая страна уже существует!");
                 return;
             }
 

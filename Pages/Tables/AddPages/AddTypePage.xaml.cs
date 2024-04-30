@@ -50,34 +50,19 @@ namespace HistoricalMuseum.Pages.AddToTables
                 return;
             }
 
-            ExhibitsTypes staffObject = new ExhibitsTypes
-            {
-                Type = txtType.Text
-            };
+            var type = MuseumEntities.GetContext().ExhibitsTypes.AsNoTracking().FirstOrDefault(f => f.Type.ToLower() == txtType.Text.ToLower());
 
-            var types = MuseumEntities.GetContext().ExhibitsTypes.AsNoTracking().FirstOrDefault(f => f.Type == txtType.Text);
+            if (type != null)
+            {
+                MessageBox.Show("Такой тип экспоната уже существует!");
+                return;
+            }
+
+            _currentType.Type = txtType.Text;
 
             if (_currentType.id == 0)
             {
-                if (types == null)
-                {
-                    MuseumEntities.GetContext().ExhibitsTypes.Add(_currentType);
-                }
-
-                else
-                {
-                    MessageBox.Show("Такой тип уже существует!");
-                    return;
-                }
-            }
-
-            else
-            {
-                if (types != null)
-                {
-                    MessageBox.Show("Такой тип уже существует!");
-                    return;
-                }
+                MuseumEntities.GetContext().ExhibitsTypes.Add(_currentType);
             }
 
             try
@@ -89,6 +74,17 @@ namespace HistoricalMuseum.Pages.AddToTables
             {
                 MessageBox.Show(ex.Message.ToString());
             }
+        }
+        private void btn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            (sender as Border).Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#FFCFBDAB");
+            (sender as Border).BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF7A6653");
+        }
+
+        private void btn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            (sender as Border).Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#FFEEDCCA");
+            (sender as Border).BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF98826C");
         }
     }
 }

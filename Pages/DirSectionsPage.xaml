@@ -27,26 +27,26 @@
         </Grid.RowDefinitions>
 
         <Border Name="brdrBtnMuseum" Margin="20,25" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" CornerRadius="5" UseLayoutRounding="False" HorizontalAlignment="Right" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MouseDown="btnMuseum_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MaxWidth="600" MaxHeight="250">
-            <Viewbox Margin="50,5" MinWidth="100">
-                <TextBlock Text="Музей" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold"/>
+            <Viewbox Margin="70,5,70,5" MinWidth="50">
+                <TextBlock Text="Музей" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold" MaxWidth="80"/>
             </Viewbox>
         </Border>
 
         <Border Name="brdrBtnTours" Margin="20,25" Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="2" CornerRadius="5" UseLayoutRounding="False" HorizontalAlignment="Left" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MouseDown="btnTours_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MaxWidth="600" MaxHeight="250">
-            <Viewbox Margin="20,5" MinWidth="100">
+            <Viewbox Margin="40,5,40,5" MinWidth="50">
                 <TextBlock Text="Экскурсии" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold"/>
             </Viewbox>
         </Border>
 
         <Border Name="brdrBtnRep1" Margin="20,25" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" CornerRadius="5" UseLayoutRounding="False" HorizontalAlignment="Right" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MouseDown="Report_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MaxWidth="600" MaxHeight="250">
-            <Viewbox Margin="20,5" MinWidth="200">
-                <TextBlock Text="Отчёт по проведённым экскурсиям" TextAlignment="Center" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" MaxWidth="100"/>
+            <Viewbox Stretch="Uniform">
+                <TextBlock Padding="5" Text="Отчёт по проведённым экскурсиям" TextAlignment="Center" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold" TextWrapping="Wrap" HorizontalAlignment="Center" MaxWidth="200"/>
             </Viewbox>
         </Border>
 
         <Border Name="brdrBtnRep2" Margin="20,25" Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="2" CornerRadius="5" UseLayoutRounding="False" HorizontalAlignment="Left" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MouseDown="Report_Click_1" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MaxWidth="600" MaxHeight="250">
-            <Viewbox Margin="25,5" MinWidth="200">
-                <TextBlock Margin="5,0" Text="Отчёт по посещению экскурсий" TextAlignment="Center" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" MaxWidth="120"/>
+            <Viewbox Stretch="Uniform">
+                <TextBlock Padding="10" Text="Отчёт по посещению экскурсий" TextAlignment="Center" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold" TextWrapping="Wrap" HorizontalAlignment="Center" MaxWidth="200"/>
             </Viewbox>
         </Border>
 
