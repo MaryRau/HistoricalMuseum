@@ -31,7 +31,7 @@
             <ComboBox Name="cmbUsername" VerticalContentAlignment="Center" FontSize="70" Background="#FFEEDCCA" TextBlock.FontFamily="Constantia" MinWidth="800" MinHeight="120" BorderBrush="#FF98826C" Foreground="#FF6A6A6A" BorderThickness="2"/>
         </Viewbox>
         
-        <Viewbox  Margin="0,38" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" MaxWidth="450" MaxHeight="250" Grid.ColumnSpan="2">
+        <Viewbox  Margin="0,38" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" MaxWidth="500" MaxHeight="300" Grid.ColumnSpan="2">
             <TextBlock Text="Пароль:"  FontSize="50" TextAlignment="Center" FontFamily="Constantia" Foreground="#FF6A6A6A" MinHeight="60" MinWidth="180"/>
         </Viewbox>
         
