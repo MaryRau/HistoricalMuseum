@@ -48,7 +48,7 @@
             <ComboBox Name="cmbType" FontSize="15" IsEditable="True" VerticalContentAlignment="Center" Background="#FFEEDCCA" TextBlock.FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FF6A6A6A" BorderThickness="1" MinWidth="400" MinHeight="30"/>
         </Viewbox>
 
-        <Viewbox Margin="100,0,5,5" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" MaxWidth="300" MaxHeight="200" Grid.ColumnSpan="2">
+        <Viewbox Margin="100,0,5,5" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" MaxWidth="270" MaxHeight="300" Grid.ColumnSpan="2">
             <TextBlock Text="Автор:" FontSize="50" TextAlignment="Center" FontFamily="Constantia" Foreground="#FF6A6A6A" MinHeight="60" MinWidth="110"/>
         </Viewbox>
 
