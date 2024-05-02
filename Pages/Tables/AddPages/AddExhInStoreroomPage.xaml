@@ -36,7 +36,7 @@
         </Border>
 
         <Border Name="borderBtnCancel" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="2" CornerRadius="5" UseLayoutRounding="False" MouseDown="ButtonCancel_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MaxWidth="350" MaxHeight="200">
-            <Viewbox Margin="15,15">
+            <Viewbox Margin="25,15">
                 <TextBlock Name="btnCancel" Text="Отмена" FontSize="50" FontWeight="Bold" TextAlignment="Center" TextBlock.FontFamily="Constantia" Foreground="#FFC8844E" VerticalAlignment="Center"/>
             </Viewbox>
         </Border>

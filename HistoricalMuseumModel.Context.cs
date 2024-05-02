@@ -23,7 +23,7 @@ namespace HistoricalMuseum
 
         public static MuseumEntities GetContext()
         {
-            if(_context == null)
+            if (_context == null)
                 _context = new MuseumEntities();
             return _context;
         }

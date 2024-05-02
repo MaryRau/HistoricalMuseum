@@ -122,5 +122,11 @@ namespace HistoricalMuseum.Pages
             (sender as Border).Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#FFEEDCCA");
             (sender as Border).BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#FF98826C");
         }
+
+        private void Viewbox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtSearch.Text == "Поиск")
+                txtSearch.Text = "";
+        }
     }
 }

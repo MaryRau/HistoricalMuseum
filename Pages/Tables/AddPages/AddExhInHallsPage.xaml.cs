@@ -52,8 +52,8 @@ namespace HistoricalMuseum.Pages.AddToTables
             {
                 if (length == 0)
                 {
-                    cmbExh.Text = "Невозможно разместить ни один экспонат!"; // настроить кнопку сохранения невидимой
-                    
+                    cmbExh.Text = "Невозможно разместить ни один экспонат!";
+                    borderBtnSave.Visibility = Visibility.Hidden;
                 }
 
                 else cmbExh.Text = "Обязательный";

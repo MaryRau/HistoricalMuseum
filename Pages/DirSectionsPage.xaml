@@ -28,7 +28,7 @@
 
         <Border Name="brdrBtnMuseum" Margin="20,25" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" CornerRadius="5" UseLayoutRounding="False" HorizontalAlignment="Right" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MouseDown="btnMuseum_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MaxWidth="600" MaxHeight="250">
             <Viewbox Margin="70,5,70,5" MinWidth="50">
-                <TextBlock Text="Музей" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold" MaxWidth="80"/>
+                <TextBlock Text="Музей" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold" MaxHeight="50"/>
             </Viewbox>
         </Border>
 

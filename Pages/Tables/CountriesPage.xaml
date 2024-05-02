@@ -24,7 +24,7 @@
             <RowDefinition Height="89*"/>
         </Grid.RowDefinitions>
 
-        <Viewbox Margin="0,0,0,0" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" VerticalAlignment="Stretch" HorizontalAlignment="Right">
+        <Viewbox Margin="0,0,0,0" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" VerticalAlignment="Stretch" HorizontalAlignment="Right" GotFocus="Viewbox_GotFocus">
             <TextBox Name="txtSearch" Text="Поиск" TextAlignment="Right" MinWidth="400" MinHeight="45" FontSize="32" GotFocus="txtSearch_GotFocus" LostFocus="txtSearch_LostFocus" Background="#FFEEDCCA" TextBlock.FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FF6A6A6A" BorderThickness="2" SelectionBrush="#FF5F4D3D"/>
         </Viewbox>
 

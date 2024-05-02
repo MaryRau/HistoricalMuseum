@@ -132,7 +132,7 @@
           <Property Name="TourTheme" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="PupolarityOfProgram" Type="int" />
         </EntityType>
-        <Association Name="FK__HallsInTo__TourP__59063A47">
+        <Association Name="FK__HallsInTo__TourP__45F365D3">
           <End Role="TourPrograms" Type="Self.TourPrograms" Multiplicity="1" />
           <End Role="HallsInTourPrograms" Type="Self.HallsInTourPrograms" Multiplicity="*" />
           <ReferentialConstraint>
@@ -144,7 +144,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Staff__Post__5AEE82B9">
+        <Association Name="FK__Staff__Post__47DBAE45">
           <End Role="Posts" Type="Self.Posts" Multiplicity="1" />
           <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
           <ReferentialConstraint>
@@ -156,7 +156,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TourEntri__Guide__5BE2A6F2">
+        <Association Name="FK__TourEntri__Guide__48CFD27E">
           <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
           <End Role="TourEntries" Type="Self.TourEntries" Multiplicity="*" />
           <ReferentialConstraint>
@@ -168,7 +168,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TourEntri__TourP__5CD6CB2B">
+        <Association Name="FK__TourEntri__TourP__49C3F6B7">
           <End Role="TourPrograms" Type="Self.TourPrograms" Multiplicity="1" />
           <End Role="TourEntries" Type="Self.TourEntries" Multiplicity="*" />
           <ReferentialConstraint>
@@ -303,19 +303,19 @@
     [PopulariryPfProgram].[PupolarityOfProgram] AS [PupolarityOfProgram]
     FROM [dbo].[PopulariryPfProgram] AS [PopulariryPfProgram]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__HallsInTo__TourP__59063A47" Association="Self.FK__HallsInTo__TourP__59063A47">
+          <AssociationSet Name="FK__HallsInTo__TourP__45F365D3" Association="Self.FK__HallsInTo__TourP__45F365D3">
             <End Role="TourPrograms" EntitySet="TourPrograms" />
             <End Role="HallsInTourPrograms" EntitySet="HallsInTourPrograms" />
           </AssociationSet>
-          <AssociationSet Name="FK__Staff__Post__5AEE82B9" Association="Self.FK__Staff__Post__5AEE82B9">
+          <AssociationSet Name="FK__Staff__Post__47DBAE45" Association="Self.FK__Staff__Post__47DBAE45">
             <End Role="Posts" EntitySet="Posts" />
             <End Role="Staff" EntitySet="Staff" />
           </AssociationSet>
-          <AssociationSet Name="FK__TourEntri__Guide__5BE2A6F2" Association="Self.FK__TourEntri__Guide__5BE2A6F2">
+          <AssociationSet Name="FK__TourEntri__Guide__48CFD27E" Association="Self.FK__TourEntri__Guide__48CFD27E">
             <End Role="Staff" EntitySet="Staff" />
             <End Role="TourEntries" EntitySet="TourEntries" />
           </AssociationSet>
-          <AssociationSet Name="FK__TourEntri__TourP__5CD6CB2B" Association="Self.FK__TourEntri__TourP__5CD6CB2B">
+          <AssociationSet Name="FK__TourEntri__TourP__49C3F6B7" Association="Self.FK__TourEntri__TourP__49C3F6B7">
             <End Role="TourPrograms" EntitySet="TourPrograms" />
             <End Role="TourEntries" EntitySet="TourEntries" />
           </AssociationSet>
@@ -434,7 +434,7 @@
           <Property Name="TourProgram" Type="Int32" Nullable="false" />
           <Property Name="Hall" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Halls" Relationship="Self.FK__Залы_в_экск__Зал__3B75D760" FromRole="HallsInTourPrograms" ToRole="Halls" />
-          <NavigationProperty Name="TourPrograms" Relationship="Self.FK__HallsInTo__TourP__59063A47" FromRole="HallsInTourPrograms" ToRole="TourPrograms" />
+          <NavigationProperty Name="TourPrograms" Relationship="Self.FK__HallsInTo__TourP__45F365D3" FromRole="HallsInTourPrograms" ToRole="TourPrograms" />
         </EntityType>
         <EntityType Name="HistoricalEpochs">
           <Key>
@@ -450,7 +450,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Post" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Staff" Relationship="Self.FK__Staff__Post__5AEE82B9" FromRole="Posts" ToRole="Staff" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK__Staff__Post__47DBAE45" FromRole="Posts" ToRole="Staff" />
         </EntityType>
         <EntityType Name="Staff">
           <Key>
@@ -459,8 +459,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FIOStaff" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Post" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Posts" Relationship="Self.FK__Staff__Post__5AEE82B9" FromRole="Staff" ToRole="Posts" />
-          <NavigationProperty Name="TourEntries" Relationship="Self.FK__TourEntri__Guide__5BE2A6F2" FromRole="Staff" ToRole="TourEntries" />
+          <NavigationProperty Name="Posts" Relationship="Self.FK__Staff__Post__47DBAE45" FromRole="Staff" ToRole="Posts" />
+          <NavigationProperty Name="TourEntries" Relationship="Self.FK__TourEntri__Guide__48CFD27E" FromRole="Staff" ToRole="TourEntries" />
         </EntityType>
         <EntityType Name="TourEntries">
           <Key>
@@ -470,8 +470,8 @@
           <Property Name="DateAndTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="TourProgram" Type="Int32" Nullable="false" />
           <Property Name="Guide" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Staff" Relationship="Self.FK__TourEntri__Guide__5BE2A6F2" FromRole="TourEntries" ToRole="Staff" />
-          <NavigationProperty Name="TourPrograms" Relationship="Self.FK__TourEntri__TourP__5CD6CB2B" FromRole="TourEntries" ToRole="TourPrograms" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK__TourEntri__Guide__48CFD27E" FromRole="TourEntries" ToRole="Staff" />
+          <NavigationProperty Name="TourPrograms" Relationship="Self.FK__TourEntri__TourP__49C3F6B7" FromRole="TourEntries" ToRole="TourPrograms" />
         </EntityType>
         <EntityType Name="TourPrograms">
           <Key>
@@ -479,8 +479,8 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TourTheme" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="HallsInTourPrograms" Relationship="Self.FK__HallsInTo__TourP__59063A47" FromRole="TourPrograms" ToRole="HallsInTourPrograms" />
-          <NavigationProperty Name="TourEntries" Relationship="Self.FK__TourEntri__TourP__5CD6CB2B" FromRole="TourPrograms" ToRole="TourEntries" />
+          <NavigationProperty Name="HallsInTourPrograms" Relationship="Self.FK__HallsInTo__TourP__45F365D3" FromRole="TourPrograms" ToRole="HallsInTourPrograms" />
+          <NavigationProperty Name="TourEntries" Relationship="Self.FK__TourEntri__TourP__49C3F6B7" FromRole="TourPrograms" ToRole="TourEntries" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -600,7 +600,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HallsInTo__TourP__59063A47">
+        <Association Name="FK__HallsInTo__TourP__45F365D3">
           <End Role="TourPrograms" Type="Self.TourPrograms" Multiplicity="1" />
           <End Role="HallsInTourPrograms" Type="Self.HallsInTourPrograms" Multiplicity="*" />
           <ReferentialConstraint>
@@ -612,7 +612,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Staff__Post__5AEE82B9">
+        <Association Name="FK__Staff__Post__47DBAE45">
           <End Role="Posts" Type="Self.Posts" Multiplicity="1" />
           <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
           <ReferentialConstraint>
@@ -624,7 +624,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TourEntri__Guide__5BE2A6F2">
+        <Association Name="FK__TourEntri__Guide__48CFD27E">
           <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
           <End Role="TourEntries" Type="Self.TourEntries" Multiplicity="*" />
           <ReferentialConstraint>
@@ -636,7 +636,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TourEntri__TourP__5CD6CB2B">
+        <Association Name="FK__TourEntri__TourP__49C3F6B7">
           <End Role="TourPrograms" Type="Self.TourPrograms" Multiplicity="1" />
           <End Role="TourEntries" Type="Self.TourEntries" Multiplicity="*" />
           <ReferentialConstraint>
@@ -697,19 +697,19 @@
             <End Role="Halls" EntitySet="Halls" />
             <End Role="HallsInTourPrograms" EntitySet="HallsInTourPrograms" />
           </AssociationSet>
-          <AssociationSet Name="FK__HallsInTo__TourP__59063A47" Association="Self.FK__HallsInTo__TourP__59063A47">
+          <AssociationSet Name="FK__HallsInTo__TourP__45F365D3" Association="Self.FK__HallsInTo__TourP__45F365D3">
             <End Role="TourPrograms" EntitySet="TourPrograms" />
             <End Role="HallsInTourPrograms" EntitySet="HallsInTourPrograms" />
           </AssociationSet>
-          <AssociationSet Name="FK__Staff__Post__5AEE82B9" Association="Self.FK__Staff__Post__5AEE82B9">
+          <AssociationSet Name="FK__Staff__Post__47DBAE45" Association="Self.FK__Staff__Post__47DBAE45">
             <End Role="Posts" EntitySet="Posts" />
             <End Role="Staff" EntitySet="Staff" />
           </AssociationSet>
-          <AssociationSet Name="FK__TourEntri__Guide__5BE2A6F2" Association="Self.FK__TourEntri__Guide__5BE2A6F2">
+          <AssociationSet Name="FK__TourEntri__Guide__48CFD27E" Association="Self.FK__TourEntri__Guide__48CFD27E">
             <End Role="Staff" EntitySet="Staff" />
             <End Role="TourEntries" EntitySet="TourEntries" />
           </AssociationSet>
-          <AssociationSet Name="FK__TourEntri__TourP__5CD6CB2B" Association="Self.FK__TourEntri__TourP__5CD6CB2B">
+          <AssociationSet Name="FK__TourEntri__TourP__49C3F6B7" Association="Self.FK__TourEntri__TourP__49C3F6B7">
             <End Role="TourPrograms" EntitySet="TourPrograms" />
             <End Role="TourEntries" EntitySet="TourEntries" />
           </AssociationSet>

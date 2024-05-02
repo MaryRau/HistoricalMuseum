@@ -26,7 +26,7 @@
         </Viewbox>
 
         <Viewbox Margin="25,0,40,0" Grid.Column="2" Grid.ColumnSpan="3" MaxHeight="110" VerticalAlignment="Center" HorizontalAlignment="Left">
-            <TextBox Name="txtCountry" Text="{Binding Country}" TextAlignment="Left" VerticalContentAlignment="Center" MaxLength="100" Background="#FFEEDCCA" TextBlock.FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FF6A6A6A" BorderThickness="1" SelectionBrush="#FF5F4D3D" MinWidth="400" MinHeight="35"/>
+            <TextBox Name="txtCountry" Text="{Binding Country}" FontSize="20" TextAlignment="Left" VerticalContentAlignment="Center" MaxLength="100" Background="#FFEEDCCA" TextBlock.FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FF6A6A6A" BorderThickness="1" SelectionBrush="#FF5F4D3D" MinWidth="400" MinHeight="35"/>
         </Viewbox>
 
         <Border Name="borderBtnSave" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="2" CornerRadius="5" UseLayoutRounding="False" MouseDown="ButtonSave_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" Grid.Column="4" MaxWidth="350" MaxHeight="200">
@@ -36,7 +36,7 @@
         </Border>
 
         <Border Name="borderBtnCancel" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="2" CornerRadius="5" UseLayoutRounding="False" MouseDown="ButtonCancel_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MaxWidth="350" MaxHeight="200">
-            <Viewbox Margin="15,15">
+            <Viewbox Margin="25,15">
                 <TextBlock Name="btnCancel" Text="Отмена" FontSize="50" FontWeight="Bold" TextAlignment="Center" TextBlock.FontFamily="Constantia" Foreground="#FFC8844E" VerticalAlignment="Center"/>
             </Viewbox>
         </Border>
